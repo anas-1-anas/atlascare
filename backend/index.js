@@ -1676,7 +1676,40 @@ app.get('/api/prescriptions/:id/pdf', authenticateJWT, async (req, res) => {
     if (!payload) {
       return res.status(404).json({ success: false, message: 'Prescription not found' });
     }
-    const pdfBuffer = await generatePrescriptionPdf({ ...payload, id }, { qrData: { prescriptionId: id } });
+
+    // Reconstruct QR payload with topicID
+    const topicID = prescriptionToTopic.get(id);
+    let qrPayload = { prescriptionId: id };
+
+    if (topicID) {
+      // Get the full HCS payload if available to extract more details
+      let fullPayload = null;
+      try {
+        const { inMemoryStore } = require('./services/store');
+        const entry = inMemoryStore.get(topicID);
+        fullPayload = entry?.payload;
+      } catch (_) { }
+
+      qrPayload = {
+        v: "1.0",
+        t: topicID,
+        h: fullPayload?.hashedPatientId || 'unknown',
+        d: 'UNKNOWN', // We don't have the exact drug codes handy here easily without re-parsing
+        q: '1',
+        i: 'See PDF',
+        u: fullPayload?.validUntil || new Date(Date.now() + 60 * 24 * 60 * 60 * 1000).toISOString(),
+        n: 'reconstructed',
+        g: fullPayload?.geoTag || 'MA-CAS',
+        p: 'unknown',
+        dc: 0,
+        md: payload.maxDispenses || 1
+      };
+      console.log(`[PDF DOWNLOAD] Reconstructed QR payload for ${id} with topicID ${topicID}`);
+    } else {
+      console.warn(`[PDF DOWNLOAD] No topicID found for ${id}, using fallback QR`);
+    }
+
+    const pdfBuffer = await generatePrescriptionPdf({ ...payload, id }, { qrData: qrPayload });
     const base64 = pdfBuffer.toString('base64');
     return res.json({ success: true, base64, filename: `Prescription_${id}.pdf` });
   } catch (e) {
