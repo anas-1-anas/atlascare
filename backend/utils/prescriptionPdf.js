@@ -188,8 +188,19 @@ async function generatePrescriptionPdf(prescription, options = {}) {
   }
 
   // QR code block bottom-right (compact size)
+  console.log('[PDF] options object:', JSON.stringify(options));
+  console.log('[PDF] options.qrData:', JSON.stringify(options.qrData));
+  console.log('[PDF] prescription.id:', prescription.id);
+
   const qrPayload = options.qrData || { prescriptionId: prescription.id || prescription.prescriptionId };
-  console.log('[PDF] QR Payload for prescription:', prescription.id, 'QR Data:', JSON.stringify(qrPayload));
+  console.log('[PDF] Final QR Payload for prescription:', prescription.id, 'QR Data:', JSON.stringify(qrPayload));
+
+  // Ensure we're using the correct format
+  if (!qrPayload.t && !qrPayload.v) {
+    console.error('[PDF] WARNING: QR payload missing topicID (t field)! Using fallback format.');
+    console.error('[PDF] This QR code will NOT work with the pharmacist portal!');
+  }
+
   const qrPng = await QRCode.toBuffer(JSON.stringify(qrPayload), { width: 80, margin: 1, color: { dark: '#000000', light: '#FFFFFF' } });
   doc.moveDown(0.2);
   const qrStartY = doc.y + 2;
