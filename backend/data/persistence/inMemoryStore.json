@@ -5534,8 +5534,107 @@
         },
         "status": "issued"
       }
+    ],
+    [
+      "0.0.7167655",
+      {
+        "prescription": {
+          "patientId": "PAT_1515",
+          "patientName": "Saad Atlas",
+          "patientEmail": "atlascaretech.management@gmail.com",
+          "patientPhone": "",
+          "contactMethod": "email",
+          "age": "30",
+          "diagnosis": "some diag",
+          "maxDispenses": 1,
+          "medications": [
+            {
+              "name": "DOLIPRANE VITAMINE C",
+              "dosage": "",
+              "unit": "mg",
+              "frequency": "1",
+              "duration": "7",
+              "durationUnit": "days",
+              "instructions": "",
+              "code": "6118000041252"
+            }
+          ],
+          "id": "8e0708f9-a5b8-42fa-beb6-8339b59cf74a",
+          "nft": {
+            "tokenId": "0.0.mock",
+            "serial": "1761910926189"
+          },
+          "doctor": "Mohamed Rami",
+          "doctorSpecialty": "Specialist in Internal Medicine",
+          "doctorNationalId": "009811233",
+          "date": "2025-10-31T11:42:09.468Z",
+          "dispenseCount": 0
+        },
+        "payload": {
+          "version": "1",
+          "alg": "secp256k1+SHA-256",
+          "eventType": "issued",
+          "topicID": "0.0.7167655",
+          "timestamp": "2025-10-31T11:42:09.152Z",
+          "validFrom": "2025-10-31T11:42:09.152Z",
+          "validUntil": "2025-12-30T11:42:09.152Z",
+          "geoTag": "33.2455641,-8.4959196",
+          "hashedPatientId": "a96af2ef0b87104da77d7afaf10c07cf19f839b4fd095f9f5d052214fb894a99",
+          "nftSerial": "1761910926189",
+          "drugIds": [
+            "6118000041252"
+          ],
+          "instructionsList": [
+            ""
+          ],
+          "signerRole": "doctor",
+          "maxDispenses": 1,
+          "dispenseCount": 1,
+          "nonce": "f4fa4dd7bcaf9a1d",
+          "contentHash": "sha256:3ec13d83efe36338c78c0b85a9d800d66978cbb7560d771058aa943b83d5ccec",
+          "keyId": "fp:c33c645cb8cfb33b",
+          "signature": "hex:3044022048605edda55ee078dbe8d0b47c1c832ee2e918a864e04d77ca9520c330f72ca602204072ea4ab16fd75360217e18e15397d3b22fcea02dca3765b0119a98c419fbb7",
+          "lastDispenseDate": "2025-10-31T11:44:42.555Z"
+        },
+        "sensitiveData": {
+          "drugIds": [
+            "6118000041252"
+          ],
+          "instructionsList": [
+            ""
+          ],
+          "nftSerial": "1761910926189",
+          "preciseGeoTag": "33.2455641,-8.4959196",
+          "medications": [
+            {
+              "name": "DOLIPRANE VITAMINE C",
+              "dosage": "",
+              "unit": "mg",
+              "frequency": "1",
+              "duration": "7",
+              "durationUnit": "days",
+              "instructions": "",
+              "code": "6118000041252"
+            }
+          ],
+          "dispensedItems": [
+            {
+              "drugId": "6118000041252",
+              "quantity": 1,
+              "unit": "box"
+            }
+          ],
+          "dispensedTotals": {
+            "amountMAD": 18,
+            "coveredMAD": 0,
+            "patientMAD": 18
+          },
+          "paymentMethod": "cash"
+        },
+        "status": "dispensed"
+      }
     ]
   ],
-  "timestamp": "2025-10-31T06:15:04.888Z",
-  "count": 46
+  "timestamp": "2025-10-31T12:00:36.556Z",
+  "count": 47
 }

@@ -3,89 +3,69 @@
     [
       0,
       {
-        "topicID": "0.0.7166084",
+        "topicID": "0.0.7167655",
         "eventType": "dispensed",
-        "timestamp": "2025-10-31T06:14:47.714Z",
+        "timestamp": "2025-10-31T11:42:09.468Z",
         "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
-        "dispenseCount": 3,
-        "maxDispenses": 12,
+        "actorIdHash": null,
+        "dispenseCount": 1,
+        "maxDispenses": 1,
         "fraudAlert": null,
         "drugIds": [
-          "6118010120817",
-          "6118000070702"
+          "6118000041252"
         ],
-        "prescriptionId": "d37233aa-9ed0-48f9-92b2-5c7f4ecd4fdf",
-        "paymentMethod": "cash",
-        "totals": {
-          "amountMAD": 167.1,
-          "coveredMAD": 116.97,
-          "patientMAD": 50.13
-        }
+        "prescriptionId": "8e0708f9-a5b8-42fa-beb6-8339b59cf74a"
       }
     ],
     [
       1,
       {
-        "topicID": "0.0.7166084",
+        "topicID": "0.0.7167655",
         "eventType": "paid",
-        "timestamp": "2025-10-31T06:14:43.118Z",
+        "timestamp": "2025-10-31T11:42:09.468Z",
         "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
-        "dispenseCount": 2,
-        "maxDispenses": 12,
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 1,
         "fraudAlert": null,
         "drugIds": [
-          "6118010120817",
-          "6118000070702"
+          "6118000041252"
         ],
-        "prescriptionId": "d37233aa-9ed0-48f9-92b2-5c7f4ecd4fdf",
-        "amountMAD": 167.1,
-        "method": "cash"
+        "prescriptionId": "8e0708f9-a5b8-42fa-beb6-8339b59cf74a"
       }
     ],
     [
       2,
       {
-        "topicID": "0.0.7166084",
-        "eventType": "dispensed",
-        "timestamp": "2025-10-31T06:07:19.027Z",
+        "topicID": "0.0.7167655",
+        "eventType": "verified",
+        "timestamp": "2025-10-31T11:42:09.468Z",
         "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
-        "dispenseCount": 2,
-        "maxDispenses": 12,
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 1,
         "fraudAlert": null,
         "drugIds": [
-          "6118010120817",
-          "6118000070702"
+          "6118000041252"
         ],
-        "prescriptionId": "d37233aa-9ed0-48f9-92b2-5c7f4ecd4fdf",
-        "paymentMethod": "cash",
-        "totals": {
-          "amountMAD": 167.1,
-          "coveredMAD": 116.97,
-          "patientMAD": 50.13
-        }
+        "prescriptionId": "8e0708f9-a5b8-42fa-beb6-8339b59cf74a"
       }
     ],
     [
       3,
       {
-        "topicID": "0.0.7166084",
-        "eventType": "paid",
-        "timestamp": "2025-10-31T06:07:16.069Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
-        "dispenseCount": 1,
-        "maxDispenses": 12,
+        "topicID": "0.0.7167655",
+        "eventType": "issued",
+        "timestamp": "2025-10-31T11:42:09.468Z",
+        "signerRole": "doctor",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 1,
         "fraudAlert": null,
         "drugIds": [
-          "6118010120817",
-          "6118000070702"
+          "6118000041252"
         ],
-        "prescriptionId": "d37233aa-9ed0-48f9-92b2-5c7f4ecd4fdf",
-        "amountMAD": 167.1,
-        "method": "cash"
+        "prescriptionId": "8e0708f9-a5b8-42fa-beb6-8339b59cf74a"
       }
     ],
     [
@@ -93,8 +73,9 @@
       {
         "topicID": "0.0.7166138",
         "eventType": "issued",
-        "timestamp": "2025-10-31T06:06:38.900Z",
+        "timestamp": "2025-10-31T06:06:39.504Z",
         "signerRole": "doctor",
+        "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 12,
         "fraudAlert": null,
@@ -110,8 +91,9 @@
       {
         "topicID": "0.0.7166100",
         "eventType": "issued",
-        "timestamp": "2025-10-31T06:02:15.176Z",
+        "timestamp": "2025-10-31T06:02:15.969Z",
         "signerRole": "doctor",
+        "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 12,
         "fraudAlert": null,
@@ -125,54 +107,11 @@
     [
       6,
       {
-        "topicID": "0.0.7166084",
-        "eventType": "dispensed",
-        "timestamp": "2025-10-31T05:59:02.817Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
-        "dispenseCount": 1,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "d37233aa-9ed0-48f9-92b2-5c7f4ecd4fdf",
-        "paymentMethod": "cash",
-        "totals": {
-          "amountMAD": 167.1,
-          "coveredMAD": 116.97,
-          "patientMAD": 50.13
-        }
-      }
-    ],
-    [
-      7,
-      {
-        "topicID": "0.0.7166084",
-        "eventType": "paid",
-        "timestamp": "2025-10-31T05:58:59.866Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
-        "dispenseCount": 0,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "d37233aa-9ed0-48f9-92b2-5c7f4ecd4fdf",
-        "amountMAD": 167.1,
-        "method": "cash"
-      }
-    ],
-    [
-      8,
-      {
         "topicID": "0.0.7166088",
         "eventType": "issued",
-        "timestamp": "2025-10-31T05:58:29.228Z",
+        "timestamp": "2025-10-31T05:58:30.795Z",
         "signerRole": "doctor",
+        "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 12,
         "fraudAlert": null,
@@ -184,13 +123,31 @@
       }
     ],
     [
-      9,
+      7,
       {
         "topicID": "0.0.7166084",
-        "eventType": "verified",
-        "timestamp": "2025-10-31T05:57:52.910Z",
+        "eventType": "dispensed",
+        "timestamp": "2025-10-31T05:55:12.813Z",
         "signerRole": "pharmacist",
-        "actorIdHash": "3a0affb68820d077a55516fdb3345f8760eb6f5ee1324bfa41c708a664d572f3",
+        "actorIdHash": null,
+        "dispenseCount": 1,
+        "maxDispenses": 12,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118010120817",
+          "6118000070702"
+        ],
+        "prescriptionId": "d37233aa-9ed0-48f9-92b2-5c7f4ecd4fdf"
+      }
+    ],
+    [
+      8,
+      {
+        "topicID": "0.0.7166084",
+        "eventType": "paid",
+        "timestamp": "2025-10-31T05:55:12.813Z",
+        "signerRole": "pharmacist",
+        "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 12,
         "fraudAlert": null,
@@ -198,7 +155,25 @@
           "6118010120817",
           "6118000070702"
         ],
-        "prescriptionId": "0.0.7166084"
+        "prescriptionId": "d37233aa-9ed0-48f9-92b2-5c7f4ecd4fdf"
+      }
+    ],
+    [
+      9,
+      {
+        "topicID": "0.0.7166084",
+        "eventType": "verified",
+        "timestamp": "2025-10-31T05:55:12.813Z",
+        "signerRole": "pharmacist",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 12,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118010120817",
+          "6118000070702"
+        ],
+        "prescriptionId": "d37233aa-9ed0-48f9-92b2-5c7f4ecd4fdf"
       }
     ],
     [
@@ -206,8 +181,9 @@
       {
         "topicID": "0.0.7166084",
         "eventType": "issued",
-        "timestamp": "2025-10-31T05:55:12.149Z",
+        "timestamp": "2025-10-31T05:55:12.813Z",
         "signerRole": "doctor",
+        "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 12,
         "fraudAlert": null,
@@ -223,8 +199,9 @@
       {
         "topicID": "0.0.7166062",
         "eventType": "issued",
-        "timestamp": "2025-10-31T05:51:16.277Z",
+        "timestamp": "2025-10-31T05:51:17.746Z",
         "signerRole": "doctor",
+        "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 12,
         "fraudAlert": null,
@@ -238,54 +215,11 @@
     [
       12,
       {
-        "topicID": "0.0.7165959",
-        "eventType": "dispensed",
-        "timestamp": "2025-10-31T05:31:07.159Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
-        "dispenseCount": 2,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "822533aa-9215-46c9-b5b7-4e78d0b7b189",
-        "paymentMethod": "cash",
-        "totals": {
-          "amountMAD": 167.1,
-          "coveredMAD": 116.97,
-          "patientMAD": 50.13
-        }
-      }
-    ],
-    [
-      13,
-      {
-        "topicID": "0.0.7165959",
-        "eventType": "paid",
-        "timestamp": "2025-10-31T05:31:03.958Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
-        "dispenseCount": 1,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "822533aa-9215-46c9-b5b7-4e78d0b7b189",
-        "amountMAD": 167.1,
-        "method": "cash"
-      }
-    ],
-    [
-      14,
-      {
         "topicID": "0.0.7165978",
         "eventType": "issued",
-        "timestamp": "2025-10-31T05:29:26.150Z",
+        "timestamp": "2025-10-31T05:29:27.150Z",
         "signerRole": "doctor",
+        "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 12,
         "fraudAlert": null,
@@ -297,13 +231,13 @@
       }
     ],
     [
-      15,
+      13,
       {
         "topicID": "0.0.7165959",
         "eventType": "dispensed",
-        "timestamp": "2025-10-31T05:21:50.378Z",
+        "timestamp": "2025-10-31T05:20:26.783Z",
         "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
+        "actorIdHash": null,
         "dispenseCount": 1,
         "maxDispenses": 12,
         "fraudAlert": null,
@@ -311,60 +245,17 @@
           "6118010120817",
           "6118000070702"
         ],
-        "prescriptionId": "822533aa-9215-46c9-b5b7-4e78d0b7b189",
-        "paymentMethod": "cash",
-        "totals": {
-          "amountMAD": 167.1,
-          "coveredMAD": 116.97,
-          "patientMAD": 50.13
-        }
+        "prescriptionId": "822533aa-9215-46c9-b5b7-4e78d0b7b189"
       }
     ],
     [
-      16,
+      14,
       {
         "topicID": "0.0.7165959",
         "eventType": "paid",
-        "timestamp": "2025-10-31T05:21:47.277Z",
+        "timestamp": "2025-10-31T05:20:26.783Z",
         "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
-        "dispenseCount": 0,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "822533aa-9215-46c9-b5b7-4e78d0b7b189",
-        "amountMAD": 167.1,
-        "method": "cash"
-      }
-    ],
-    [
-      17,
-      {
-        "topicID": "0.0.7165959",
-        "eventType": "verified",
-        "timestamp": "2025-10-31T05:21:18.910Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": "5c20c08b016b17aadf7f5a7c8d7f9ff5181e10e6a7f1991ea6340efbd8a3fa9c",
-        "dispenseCount": 0,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "0.0.7165959"
-      }
-    ],
-    [
-      18,
-      {
-        "topicID": "0.0.7165959",
-        "eventType": "issued",
-        "timestamp": "2025-10-31T05:20:25.753Z",
-        "signerRole": "doctor",
+        "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 12,
         "fraudAlert": null,
@@ -376,13 +267,49 @@
       }
     ],
     [
-      19,
+      15,
+      {
+        "topicID": "0.0.7165959",
+        "eventType": "verified",
+        "timestamp": "2025-10-31T05:20:26.783Z",
+        "signerRole": "pharmacist",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 12,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118010120817",
+          "6118000070702"
+        ],
+        "prescriptionId": "822533aa-9215-46c9-b5b7-4e78d0b7b189"
+      }
+    ],
+    [
+      16,
+      {
+        "topicID": "0.0.7165959",
+        "eventType": "issued",
+        "timestamp": "2025-10-31T05:20:26.783Z",
+        "signerRole": "doctor",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 12,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118010120817",
+          "6118000070702"
+        ],
+        "prescriptionId": "822533aa-9215-46c9-b5b7-4e78d0b7b189"
+      }
+    ],
+    [
+      17,
       {
         "topicID": "0.0.7165951",
         "eventType": "dispensed",
-        "timestamp": "2025-10-31T05:10:18.338Z",
+        "timestamp": "2025-10-31T05:08:59.562Z",
         "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
+        "actorIdHash": null,
         "dispenseCount": 1,
         "maxDispenses": 12,
         "fraudAlert": null,
@@ -390,60 +317,17 @@
           "6118010120817",
           "6118000070702"
         ],
-        "prescriptionId": "fc90e4c1-0d28-48ac-bc29-7225077662c6",
-        "paymentMethod": "cash",
-        "totals": {
-          "amountMAD": 167.1,
-          "coveredMAD": 116.97,
-          "patientMAD": 50.13
-        }
+        "prescriptionId": "fc90e4c1-0d28-48ac-bc29-7225077662c6"
       }
     ],
     [
-      20,
+      18,
       {
         "topicID": "0.0.7165951",
         "eventType": "paid",
-        "timestamp": "2025-10-31T05:10:16.452Z",
+        "timestamp": "2025-10-31T05:08:59.562Z",
         "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
-        "dispenseCount": 0,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "fc90e4c1-0d28-48ac-bc29-7225077662c6",
-        "amountMAD": 167.1,
-        "method": "cash"
-      }
-    ],
-    [
-      21,
-      {
-        "topicID": "0.0.7165951",
-        "eventType": "verified",
-        "timestamp": "2025-10-31T05:10:03.418Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": "786eeb457c998454824d262d491a3b2819e3c76c6d893e64e0d10d852ec2bf9c",
-        "dispenseCount": 0,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "0.0.7165951"
-      }
-    ],
-    [
-      22,
-      {
-        "topicID": "0.0.7165951",
-        "eventType": "issued",
-        "timestamp": "2025-10-31T05:08:58.847Z",
-        "signerRole": "doctor",
+        "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 12,
         "fraudAlert": null,
@@ -455,13 +339,49 @@
       }
     ],
     [
-      23,
+      19,
+      {
+        "topicID": "0.0.7165951",
+        "eventType": "verified",
+        "timestamp": "2025-10-31T05:08:59.562Z",
+        "signerRole": "pharmacist",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 12,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118010120817",
+          "6118000070702"
+        ],
+        "prescriptionId": "fc90e4c1-0d28-48ac-bc29-7225077662c6"
+      }
+    ],
+    [
+      20,
+      {
+        "topicID": "0.0.7165951",
+        "eventType": "issued",
+        "timestamp": "2025-10-31T05:08:59.562Z",
+        "signerRole": "doctor",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 12,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118010120817",
+          "6118000070702"
+        ],
+        "prescriptionId": "fc90e4c1-0d28-48ac-bc29-7225077662c6"
+      }
+    ],
+    [
+      21,
       {
         "topicID": "0.0.7165945",
         "eventType": "dispensed",
-        "timestamp": "2025-10-31T05:04:18.003Z",
+        "timestamp": "2025-10-31T05:02:44.260Z",
         "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
+        "actorIdHash": null,
         "dispenseCount": 1,
         "maxDispenses": 12,
         "fraudAlert": null,
@@ -469,60 +389,17 @@
           "6118010120817",
           "6118000070702"
         ],
-        "prescriptionId": "e4d2a926-5117-4a3c-97e4-eb19340775f8",
-        "paymentMethod": "cash",
-        "totals": {
-          "amountMAD": 167.1,
-          "coveredMAD": 116.97,
-          "patientMAD": 50.13
-        }
+        "prescriptionId": "e4d2a926-5117-4a3c-97e4-eb19340775f8"
       }
     ],
     [
-      24,
+      22,
       {
         "topicID": "0.0.7165945",
         "eventType": "paid",
-        "timestamp": "2025-10-31T05:04:14.650Z",
+        "timestamp": "2025-10-31T05:02:44.260Z",
         "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
-        "dispenseCount": 0,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "e4d2a926-5117-4a3c-97e4-eb19340775f8",
-        "amountMAD": 167.1,
-        "method": "cash"
-      }
-    ],
-    [
-      25,
-      {
-        "topicID": "0.0.7165945",
-        "eventType": "verified",
-        "timestamp": "2025-10-31T05:03:50.399Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": "b107ca3fcf59f1a49bb1ea09b91c28297a2cfe6c61888868dc2e44bc32b5a056",
-        "dispenseCount": 0,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "0.0.7165945"
-      }
-    ],
-    [
-      26,
-      {
-        "topicID": "0.0.7165945",
-        "eventType": "issued",
-        "timestamp": "2025-10-31T05:02:43.494Z",
-        "signerRole": "doctor",
+        "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 12,
         "fraudAlert": null,
@@ -534,13 +411,49 @@
       }
     ],
     [
-      27,
+      23,
+      {
+        "topicID": "0.0.7165945",
+        "eventType": "verified",
+        "timestamp": "2025-10-31T05:02:44.260Z",
+        "signerRole": "pharmacist",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 12,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118010120817",
+          "6118000070702"
+        ],
+        "prescriptionId": "e4d2a926-5117-4a3c-97e4-eb19340775f8"
+      }
+    ],
+    [
+      24,
+      {
+        "topicID": "0.0.7165945",
+        "eventType": "issued",
+        "timestamp": "2025-10-31T05:02:44.260Z",
+        "signerRole": "doctor",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 12,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118010120817",
+          "6118000070702"
+        ],
+        "prescriptionId": "e4d2a926-5117-4a3c-97e4-eb19340775f8"
+      }
+    ],
+    [
+      25,
       {
         "topicID": "0.0.7165940",
         "eventType": "dispensed",
-        "timestamp": "2025-10-31T04:57:01.974Z",
+        "timestamp": "2025-10-31T04:55:50.847Z",
         "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
+        "actorIdHash": null,
         "dispenseCount": 1,
         "maxDispenses": 12,
         "fraudAlert": null,
@@ -548,60 +461,17 @@
           "6118010120817",
           "6118000070702"
         ],
-        "prescriptionId": "d49d51ff-8d3c-4953-9357-c4eb78d6ade0",
-        "paymentMethod": "cash",
-        "totals": {
-          "amountMAD": 167.1,
-          "coveredMAD": 116.97,
-          "patientMAD": 50.13
-        }
+        "prescriptionId": "d49d51ff-8d3c-4953-9357-c4eb78d6ade0"
       }
     ],
     [
-      28,
+      26,
       {
         "topicID": "0.0.7165940",
         "eventType": "paid",
-        "timestamp": "2025-10-31T04:56:59.709Z",
+        "timestamp": "2025-10-31T04:55:50.847Z",
         "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
-        "dispenseCount": 0,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "d49d51ff-8d3c-4953-9357-c4eb78d6ade0",
-        "amountMAD": 167.1,
-        "method": "cash"
-      }
-    ],
-    [
-      29,
-      {
-        "topicID": "0.0.7165940",
-        "eventType": "verified",
-        "timestamp": "2025-10-31T04:56:40.662Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": "04eaa0c0b029f1a9af65bcf0128fd8bb310954f805b0b66543430ea5c54b9f39",
-        "dispenseCount": 0,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "0.0.7165940"
-      }
-    ],
-    [
-      30,
-      {
-        "topicID": "0.0.7165940",
-        "eventType": "issued",
-        "timestamp": "2025-10-31T04:55:50.272Z",
-        "signerRole": "doctor",
+        "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 12,
         "fraudAlert": null,
@@ -613,96 +483,13 @@
       }
     ],
     [
-      31,
+      27,
       {
-        "topicID": "0.0.7165864",
-        "eventType": "dispensed",
-        "timestamp": "2025-10-31T04:48:26.958Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
-        "dispenseCount": 2,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "ce79d8cc-76e3-4aae-9d25-3ef0cdaada69",
-        "paymentMethod": "cash",
-        "totals": {
-          "amountMAD": 167.1,
-          "coveredMAD": 116.97,
-          "patientMAD": 50.13
-        }
-      }
-    ],
-    [
-      32,
-      {
-        "topicID": "0.0.7165864",
-        "eventType": "paid",
-        "timestamp": "2025-10-31T04:48:23.793Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
-        "dispenseCount": 1,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "ce79d8cc-76e3-4aae-9d25-3ef0cdaada69",
-        "amountMAD": 167.1,
-        "method": "cash"
-      }
-    ],
-    [
-      33,
-      {
+        "topicID": "0.0.7165940",
         "eventType": "verified",
-        "timestamp": "2025-10-31T04:48:20.736Z",
+        "timestamp": "2025-10-31T04:55:50.847Z",
         "signerRole": "pharmacist",
-        "actorIdHash": "9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
-        "dispenseCount": 0,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": []
-      }
-    ],
-    [
-      34,
-      {
-        "eventType": "verified",
-        "timestamp": "2025-10-31T04:48:20.326Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": "9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
-        "dispenseCount": 0,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": []
-      }
-    ],
-    [
-      35,
-      {
-        "eventType": "verified",
-        "timestamp": "2025-10-31T04:48:01.792Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": "9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
-        "dispenseCount": 0,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": []
-      }
-    ],
-    [
-      36,
-      {
-        "topicID": "0.0.7165929",
-        "eventType": "verified",
-        "timestamp": "2025-10-31T04:47:44.971Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": "9333d5ebb44fb73032453bcca58e767d7d0137c8798b9734cccd2b8bc6c0c57b",
+        "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 12,
         "fraudAlert": null,
@@ -710,16 +497,35 @@
           "6118010120817",
           "6118000070702"
         ],
-        "prescriptionId": "0.0.7165929"
+        "prescriptionId": "d49d51ff-8d3c-4953-9357-c4eb78d6ade0"
       }
     ],
     [
-      37,
+      28,
+      {
+        "topicID": "0.0.7165940",
+        "eventType": "issued",
+        "timestamp": "2025-10-31T04:55:50.847Z",
+        "signerRole": "doctor",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 12,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118010120817",
+          "6118000070702"
+        ],
+        "prescriptionId": "d49d51ff-8d3c-4953-9357-c4eb78d6ade0"
+      }
+    ],
+    [
+      29,
       {
         "topicID": "0.0.7165929",
         "eventType": "issued",
-        "timestamp": "2025-10-31T04:46:46.815Z",
+        "timestamp": "2025-10-31T04:46:47.670Z",
         "signerRole": "doctor",
+        "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 12,
         "fraudAlert": null,
@@ -731,13 +537,13 @@
       }
     ],
     [
-      38,
+      30,
       {
         "topicID": "0.0.7165864",
         "eventType": "dispensed",
-        "timestamp": "2025-10-31T04:33:02.766Z",
+        "timestamp": "2025-10-31T04:31:30.922Z",
         "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
+        "actorIdHash": null,
         "dispenseCount": 1,
         "maxDispenses": 12,
         "fraudAlert": null,
@@ -745,60 +551,17 @@
           "6118010120817",
           "6118000070702"
         ],
-        "prescriptionId": "ce79d8cc-76e3-4aae-9d25-3ef0cdaada69",
-        "paymentMethod": "cash",
-        "totals": {
-          "amountMAD": 167.1,
-          "coveredMAD": 116.97,
-          "patientMAD": 50.13
-        }
+        "prescriptionId": "ce79d8cc-76e3-4aae-9d25-3ef0cdaada69"
       }
     ],
     [
-      39,
+      31,
       {
         "topicID": "0.0.7165864",
         "eventType": "paid",
-        "timestamp": "2025-10-31T04:32:59.708Z",
+        "timestamp": "2025-10-31T04:31:30.922Z",
         "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
-        "dispenseCount": 0,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "ce79d8cc-76e3-4aae-9d25-3ef0cdaada69",
-        "amountMAD": 167.1,
-        "method": "cash"
-      }
-    ],
-    [
-      40,
-      {
-        "topicID": "0.0.7165864",
-        "eventType": "verified",
-        "timestamp": "2025-10-31T04:32:45.056Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": "2f95c8991b42911ac7dd5d670c036427205ab909ae123fbc775cf5563f4d52ca",
-        "dispenseCount": 0,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "0.0.7165864"
-      }
-    ],
-    [
-      41,
-      {
-        "topicID": "0.0.7165864",
-        "eventType": "issued",
-        "timestamp": "2025-10-31T04:31:29.675Z",
-        "signerRole": "doctor",
+        "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 12,
         "fraudAlert": null,
@@ -810,57 +573,13 @@
       }
     ],
     [
-      42,
+      32,
       {
-        "topicID": "0.0.7165848",
-        "eventType": "dispensed",
-        "timestamp": "2025-10-31T04:26:57.043Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
-        "dispenseCount": 1,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "7fb28c69-5e2c-4d55-ae8c-785ff5f263bf",
-        "paymentMethod": "cash",
-        "totals": {
-          "amountMAD": 167.1,
-          "coveredMAD": 116.97,
-          "patientMAD": 50.13
-        }
-      }
-    ],
-    [
-      43,
-      {
-        "topicID": "0.0.7165848",
-        "eventType": "paid",
-        "timestamp": "2025-10-31T04:26:55.177Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
-        "dispenseCount": 0,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "7fb28c69-5e2c-4d55-ae8c-785ff5f263bf",
-        "amountMAD": 167.1,
-        "method": "cash"
-      }
-    ],
-    [
-      44,
-      {
-        "topicID": "0.0.7165848",
+        "topicID": "0.0.7165864",
         "eventType": "verified",
-        "timestamp": "2025-10-31T04:26:32.506Z",
+        "timestamp": "2025-10-31T04:31:30.922Z",
         "signerRole": "pharmacist",
-        "actorIdHash": "d8be10e997ed1a17c05d83084dbb06146dd034c8a6660c69ccc660798783f460",
+        "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 12,
         "fraudAlert": null,
@@ -868,16 +587,35 @@
           "6118010120817",
           "6118000070702"
         ],
-        "prescriptionId": "0.0.7165848"
+        "prescriptionId": "ce79d8cc-76e3-4aae-9d25-3ef0cdaada69"
       }
     ],
     [
-      45,
+      33,
+      {
+        "topicID": "0.0.7165864",
+        "eventType": "issued",
+        "timestamp": "2025-10-31T04:31:30.922Z",
+        "signerRole": "doctor",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 12,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118010120817",
+          "6118000070702"
+        ],
+        "prescriptionId": "ce79d8cc-76e3-4aae-9d25-3ef0cdaada69"
+      }
+    ],
+    [
+      34,
       {
         "topicID": "0.0.7165856",
         "eventType": "issued",
-        "timestamp": "2025-10-31T04:25:13.793Z",
+        "timestamp": "2025-10-31T04:25:14.381Z",
         "signerRole": "doctor",
+        "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 1,
         "fraudAlert": null,
@@ -889,12 +627,31 @@
       }
     ],
     [
-      46,
+      35,
       {
         "topicID": "0.0.7165848",
-        "eventType": "issued",
-        "timestamp": "2025-10-31T04:21:23.666Z",
-        "signerRole": "doctor",
+        "eventType": "dispensed",
+        "timestamp": "2025-10-31T04:21:23.929Z",
+        "signerRole": "pharmacist",
+        "actorIdHash": null,
+        "dispenseCount": 1,
+        "maxDispenses": 12,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118010120817",
+          "6118000070702"
+        ],
+        "prescriptionId": "7fb28c69-5e2c-4d55-ae8c-785ff5f263bf"
+      }
+    ],
+    [
+      36,
+      {
+        "topicID": "0.0.7165848",
+        "eventType": "paid",
+        "timestamp": "2025-10-31T04:21:23.929Z",
+        "signerRole": "pharmacist",
+        "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 12,
         "fraudAlert": null,
@@ -906,13 +663,49 @@
       }
     ],
     [
-      47,
+      37,
+      {
+        "topicID": "0.0.7165848",
+        "eventType": "verified",
+        "timestamp": "2025-10-31T04:21:23.929Z",
+        "signerRole": "pharmacist",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 12,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118010120817",
+          "6118000070702"
+        ],
+        "prescriptionId": "7fb28c69-5e2c-4d55-ae8c-785ff5f263bf"
+      }
+    ],
+    [
+      38,
+      {
+        "topicID": "0.0.7165848",
+        "eventType": "issued",
+        "timestamp": "2025-10-31T04:21:23.929Z",
+        "signerRole": "doctor",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 12,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118010120817",
+          "6118000070702"
+        ],
+        "prescriptionId": "7fb28c69-5e2c-4d55-ae8c-785ff5f263bf"
+      }
+    ],
+    [
+      39,
       {
         "topicID": "0.0.7165838",
         "eventType": "dispensed",
-        "timestamp": "2025-10-31T04:17:15.995Z",
+        "timestamp": "2025-10-31T04:15:33.281Z",
         "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
+        "actorIdHash": null,
         "dispenseCount": 1,
         "maxDispenses": 1,
         "fraudAlert": null,
@@ -920,60 +713,17 @@
           "6118000160212",
           "6118000040972"
         ],
-        "prescriptionId": "ed75806b-ad8d-44f7-9a03-b49da2ee0977",
-        "paymentMethod": "cash",
-        "totals": {
-          "amountMAD": 130.25,
-          "coveredMAD": 91.17,
-          "patientMAD": 39.08
-        }
+        "prescriptionId": "ed75806b-ad8d-44f7-9a03-b49da2ee0977"
       }
     ],
     [
-      48,
+      40,
       {
         "topicID": "0.0.7165838",
         "eventType": "paid",
-        "timestamp": "2025-10-31T04:17:13.455Z",
+        "timestamp": "2025-10-31T04:15:33.281Z",
         "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
-        "dispenseCount": 0,
-        "maxDispenses": 1,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118000160212",
-          "6118000040972"
-        ],
-        "prescriptionId": "ed75806b-ad8d-44f7-9a03-b49da2ee0977",
-        "amountMAD": 130.25,
-        "method": "cash"
-      }
-    ],
-    [
-      49,
-      {
-        "topicID": "0.0.7165838",
-        "eventType": "verified",
-        "timestamp": "2025-10-31T04:16:55.235Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": "87eaf147620b4431dc7d63c2455cdd80b650ed17f9c09e23adb9cad02fd51b3b",
-        "dispenseCount": 0,
-        "maxDispenses": 1,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118000160212",
-          "6118000040972"
-        ],
-        "prescriptionId": "0.0.7165838"
-      }
-    ],
-    [
-      50,
-      {
-        "topicID": "0.0.7165838",
-        "eventType": "issued",
-        "timestamp": "2025-10-31T04:15:32.178Z",
-        "signerRole": "doctor",
+        "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 1,
         "fraudAlert": null,
@@ -985,13 +735,49 @@
       }
     ],
     [
-      51,
+      41,
+      {
+        "topicID": "0.0.7165838",
+        "eventType": "verified",
+        "timestamp": "2025-10-31T04:15:33.281Z",
+        "signerRole": "pharmacist",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 1,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118000160212",
+          "6118000040972"
+        ],
+        "prescriptionId": "ed75806b-ad8d-44f7-9a03-b49da2ee0977"
+      }
+    ],
+    [
+      42,
+      {
+        "topicID": "0.0.7165838",
+        "eventType": "issued",
+        "timestamp": "2025-10-31T04:15:33.281Z",
+        "signerRole": "doctor",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 1,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118000160212",
+          "6118000040972"
+        ],
+        "prescriptionId": "ed75806b-ad8d-44f7-9a03-b49da2ee0977"
+      }
+    ],
+    [
+      43,
       {
         "topicID": "0.0.7165817",
         "eventType": "dispensed",
-        "timestamp": "2025-10-31T04:05:36.644Z",
+        "timestamp": "2025-10-31T04:03:36.868Z",
         "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
+        "actorIdHash": null,
         "dispenseCount": 1,
         "maxDispenses": 1,
         "fraudAlert": null,
@@ -999,60 +785,17 @@
           "6118000160212",
           "6118000040972"
         ],
-        "prescriptionId": "d1abe7c1-f8e4-41b9-8fdd-4b688b27021b",
-        "paymentMethod": "cash",
-        "totals": {
-          "amountMAD": 130.25,
-          "coveredMAD": 91.17,
-          "patientMAD": 39.08
-        }
+        "prescriptionId": "d1abe7c1-f8e4-41b9-8fdd-4b688b27021b"
       }
     ],
     [
-      52,
+      44,
       {
         "topicID": "0.0.7165817",
         "eventType": "paid",
-        "timestamp": "2025-10-31T04:05:33.759Z",
+        "timestamp": "2025-10-31T04:03:36.868Z",
         "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
-        "dispenseCount": 0,
-        "maxDispenses": 1,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118000160212",
-          "6118000040972"
-        ],
-        "prescriptionId": "d1abe7c1-f8e4-41b9-8fdd-4b688b27021b",
-        "amountMAD": 130.25,
-        "method": "cash"
-      }
-    ],
-    [
-      53,
-      {
-        "topicID": "0.0.7165817",
-        "eventType": "verified",
-        "timestamp": "2025-10-31T04:05:21.891Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": "b1aace025106e6e12b1c39728bc9fae4e3467fdfda02ea011246d71b0c7132f0",
-        "dispenseCount": 0,
-        "maxDispenses": 1,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118000160212",
-          "6118000040972"
-        ],
-        "prescriptionId": "0.0.7165817"
-      }
-    ],
-    [
-      54,
-      {
-        "topicID": "0.0.7165817",
-        "eventType": "issued",
-        "timestamp": "2025-10-31T04:03:36.022Z",
-        "signerRole": "doctor",
+        "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 1,
         "fraudAlert": null,
@@ -1064,13 +807,13 @@
       }
     ],
     [
-      55,
+      45,
       {
-        "topicID": "0.0.7165795",
+        "topicID": "0.0.7165817",
         "eventType": "verified",
-        "timestamp": "2025-10-31T04:00:17.717Z",
+        "timestamp": "2025-10-31T04:03:36.868Z",
         "signerRole": "pharmacist",
-        "actorIdHash": "3f91666a51f41e5436be38812a1d272ea62493a8617d8be9547e619ad96f63df",
+        "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 1,
         "fraudAlert": null,
@@ -1078,16 +821,35 @@
           "6118000160212",
           "6118000040972"
         ],
-        "prescriptionId": "0.0.7165795"
+        "prescriptionId": "d1abe7c1-f8e4-41b9-8fdd-4b688b27021b"
       }
     ],
     [
-      56,
+      46,
+      {
+        "topicID": "0.0.7165817",
+        "eventType": "issued",
+        "timestamp": "2025-10-31T04:03:36.868Z",
+        "signerRole": "doctor",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 1,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118000160212",
+          "6118000040972"
+        ],
+        "prescriptionId": "d1abe7c1-f8e4-41b9-8fdd-4b688b27021b"
+      }
+    ],
+    [
+      47,
       {
         "topicID": "0.0.7165795",
         "eventType": "issued",
-        "timestamp": "2025-10-31T03:58:59.138Z",
+        "timestamp": "2025-10-31T03:59:00.376Z",
         "signerRole": "doctor",
+        "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 1,
         "fraudAlert": null,
@@ -1099,12 +861,13 @@
       }
     ],
     [
-      57,
+      48,
       {
         "topicID": "0.0.7165768",
         "eventType": "issued",
-        "timestamp": "2025-10-31T03:52:55.389Z",
+        "timestamp": "2025-10-31T03:52:56.614Z",
         "signerRole": "doctor",
+        "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 1,
         "fraudAlert": null,
@@ -1116,13 +879,13 @@
       }
     ],
     [
-      58,
+      49,
       {
         "topicID": "0.0.7165694",
         "eventType": "dispensed",
-        "timestamp": "2025-10-31T03:19:10.490Z",
+        "timestamp": "2025-10-31T03:17:30.008Z",
         "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
+        "actorIdHash": null,
         "dispenseCount": 1,
         "maxDispenses": 1,
         "fraudAlert": null,
@@ -1130,60 +893,17 @@
           "6118000160212",
           "6118000040972"
         ],
-        "prescriptionId": "593d31cf-af14-4a30-b142-a92f7274e183",
-        "paymentMethod": "cash",
-        "totals": {
-          "amountMAD": 130.25,
-          "coveredMAD": 91.17,
-          "patientMAD": 39.08
-        }
+        "prescriptionId": "593d31cf-af14-4a30-b142-a92f7274e183"
       }
     ],
     [
-      59,
+      50,
       {
         "topicID": "0.0.7165694",
         "eventType": "paid",
-        "timestamp": "2025-10-31T03:19:06.899Z",
+        "timestamp": "2025-10-31T03:17:30.008Z",
         "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
-        "dispenseCount": 0,
-        "maxDispenses": 1,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118000160212",
-          "6118000040972"
-        ],
-        "prescriptionId": "593d31cf-af14-4a30-b142-a92f7274e183",
-        "amountMAD": 130.25,
-        "method": "cash"
-      }
-    ],
-    [
-      60,
-      {
-        "topicID": "0.0.7165694",
-        "eventType": "verified",
-        "timestamp": "2025-10-31T03:18:47.506Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": "bcad14eb702e50c8d4ccef67488e2667ce159f94419c3316ec07583791aeb5ed",
-        "dispenseCount": 0,
-        "maxDispenses": 1,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118000160212",
-          "6118000040972"
-        ],
-        "prescriptionId": "0.0.7165694"
-      }
-    ],
-    [
-      61,
-      {
-        "topicID": "0.0.7165694",
-        "eventType": "issued",
-        "timestamp": "2025-10-31T03:17:28.805Z",
-        "signerRole": "doctor",
+        "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 1,
         "fraudAlert": null,
@@ -1195,13 +915,49 @@
       }
     ],
     [
-      62,
+      51,
+      {
+        "topicID": "0.0.7165694",
+        "eventType": "verified",
+        "timestamp": "2025-10-31T03:17:30.008Z",
+        "signerRole": "pharmacist",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 1,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118000160212",
+          "6118000040972"
+        ],
+        "prescriptionId": "593d31cf-af14-4a30-b142-a92f7274e183"
+      }
+    ],
+    [
+      52,
+      {
+        "topicID": "0.0.7165694",
+        "eventType": "issued",
+        "timestamp": "2025-10-31T03:17:30.008Z",
+        "signerRole": "doctor",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 1,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118000160212",
+          "6118000040972"
+        ],
+        "prescriptionId": "593d31cf-af14-4a30-b142-a92f7274e183"
+      }
+    ],
+    [
+      53,
       {
         "topicID": "0.0.7165597",
         "eventType": "dispensed",
-        "timestamp": "2025-10-31T02:26:51.652Z",
+        "timestamp": "2025-10-31T02:24:22.558Z",
         "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
+        "actorIdHash": null,
         "dispenseCount": 1,
         "maxDispenses": 1,
         "fraudAlert": null,
@@ -1209,60 +965,17 @@
           "6118000160212",
           "6118000040972"
         ],
-        "prescriptionId": "2a245b97-e797-40e2-b5b2-4b7f0e46bd06",
-        "paymentMethod": "cash",
-        "totals": {
-          "amountMAD": 130.25,
-          "coveredMAD": 91.17,
-          "patientMAD": 39.08
-        }
+        "prescriptionId": "2a245b97-e797-40e2-b5b2-4b7f0e46bd06"
       }
     ],
     [
-      63,
+      54,
       {
         "topicID": "0.0.7165597",
         "eventType": "paid",
-        "timestamp": "2025-10-31T02:26:46.940Z",
+        "timestamp": "2025-10-31T02:24:22.558Z",
         "signerRole": "pharmacist",
-        "actorIdHash": "sha256:9809c11427f144e5a9c84a4ee3e28a6f1b222c2d5842055efaa69a0ef59ed531",
-        "dispenseCount": 0,
-        "maxDispenses": 1,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118000160212",
-          "6118000040972"
-        ],
-        "prescriptionId": "2a245b97-e797-40e2-b5b2-4b7f0e46bd06",
-        "amountMAD": 130.25,
-        "method": "cash"
-      }
-    ],
-    [
-      64,
-      {
-        "topicID": "0.0.7165597",
-        "eventType": "verified",
-        "timestamp": "2025-10-31T02:26:25.957Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": "9f90f8c2d8a8331f3f6a212a4ee33f77879e3a73d1237b50cb68872d1e27b351",
-        "dispenseCount": 0,
-        "maxDispenses": 1,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118000160212",
-          "6118000040972"
-        ],
-        "prescriptionId": "0.0.7165597"
-      }
-    ],
-    [
-      65,
-      {
-        "topicID": "0.0.7165597",
-        "eventType": "issued",
-        "timestamp": "2025-10-31T02:24:19.394Z",
-        "signerRole": "doctor",
+        "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 1,
         "fraudAlert": null,
@@ -1274,7 +987,43 @@
       }
     ],
     [
-      66,
+      55,
+      {
+        "topicID": "0.0.7165597",
+        "eventType": "verified",
+        "timestamp": "2025-10-31T02:24:22.558Z",
+        "signerRole": "pharmacist",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 1,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118000160212",
+          "6118000040972"
+        ],
+        "prescriptionId": "2a245b97-e797-40e2-b5b2-4b7f0e46bd06"
+      }
+    ],
+    [
+      56,
+      {
+        "topicID": "0.0.7165597",
+        "eventType": "issued",
+        "timestamp": "2025-10-31T02:24:22.558Z",
+        "signerRole": "doctor",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 1,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118000160212",
+          "6118000040972"
+        ],
+        "prescriptionId": "2a245b97-e797-40e2-b5b2-4b7f0e46bd06"
+      }
+    ],
+    [
+      57,
       {
         "topicID": "0.0.7165047",
         "eventType": "issued",
@@ -1292,7 +1041,7 @@
       }
     ],
     [
-      67,
+      58,
       {
         "topicID": "0.0.7165029",
         "eventType": "issued",
@@ -1310,7 +1059,7 @@
       }
     ],
     [
-      68,
+      59,
       {
         "topicID": "0.0.7164457",
         "eventType": "dispensed",
@@ -1325,356 +1074,518 @@
           "6118000070702"
         ],
         "prescriptionId": "658911fe-a147-4bfe-a552-1ac1bdd27684"
+      }
+    ],
+    [
+      60,
+      {
+        "topicID": "0.0.7164457",
+        "eventType": "paid",
+        "timestamp": "2025-10-30T22:15:10.982Z",
+        "signerRole": "pharmacist",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 12,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118010120817",
+          "6118000070702"
+        ],
+        "prescriptionId": "658911fe-a147-4bfe-a552-1ac1bdd27684"
+      }
+    ],
+    [
+      61,
+      {
+        "topicID": "0.0.7164457",
+        "eventType": "verified",
+        "timestamp": "2025-10-30T22:15:10.982Z",
+        "signerRole": "pharmacist",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 12,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118010120817",
+          "6118000070702"
+        ],
+        "prescriptionId": "658911fe-a147-4bfe-a552-1ac1bdd27684"
+      }
+    ],
+    [
+      62,
+      {
+        "topicID": "0.0.7164457",
+        "eventType": "issued",
+        "timestamp": "2025-10-30T22:15:10.982Z",
+        "signerRole": "doctor",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 12,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118010120817",
+          "6118000070702"
+        ],
+        "prescriptionId": "658911fe-a147-4bfe-a552-1ac1bdd27684"
+      }
+    ],
+    [
+      63,
+      {
+        "topicID": "0.0.7163562",
+        "eventType": "dispensed",
+        "timestamp": "2025-10-30T21:08:22.544Z",
+        "signerRole": "pharmacist",
+        "actorIdHash": null,
+        "dispenseCount": 1,
+        "maxDispenses": 1,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118000160212",
+          "6118000040972"
+        ],
+        "prescriptionId": "89402578-63a5-40b4-ad85-136a79be8bd6"
+      }
+    ],
+    [
+      64,
+      {
+        "topicID": "0.0.7163562",
+        "eventType": "paid",
+        "timestamp": "2025-10-30T21:08:22.544Z",
+        "signerRole": "pharmacist",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 1,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118000160212",
+          "6118000040972"
+        ],
+        "prescriptionId": "89402578-63a5-40b4-ad85-136a79be8bd6"
+      }
+    ],
+    [
+      65,
+      {
+        "topicID": "0.0.7163562",
+        "eventType": "verified",
+        "timestamp": "2025-10-30T21:08:22.544Z",
+        "signerRole": "pharmacist",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 1,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118000160212",
+          "6118000040972"
+        ],
+        "prescriptionId": "89402578-63a5-40b4-ad85-136a79be8bd6"
+      }
+    ],
+    [
+      66,
+      {
+        "topicID": "0.0.7163562",
+        "eventType": "issued",
+        "timestamp": "2025-10-30T21:08:22.544Z",
+        "signerRole": "doctor",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 1,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118000160212",
+          "6118000040972"
+        ],
+        "prescriptionId": "89402578-63a5-40b4-ad85-136a79be8bd6"
+      }
+    ],
+    [
+      67,
+      {
+        "topicID": "0.0.7163547",
+        "eventType": "dispensed",
+        "timestamp": "2025-10-30T21:04:50.414Z",
+        "signerRole": "pharmacist",
+        "actorIdHash": null,
+        "dispenseCount": 1,
+        "maxDispenses": 1,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118000160212",
+          "6118000040972"
+        ],
+        "prescriptionId": "55e5705e-4965-41ef-8572-d8964388a712"
+      }
+    ],
+    [
+      68,
+      {
+        "topicID": "0.0.7163547",
+        "eventType": "paid",
+        "timestamp": "2025-10-30T21:04:50.414Z",
+        "signerRole": "pharmacist",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 1,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118000160212",
+          "6118000040972"
+        ],
+        "prescriptionId": "55e5705e-4965-41ef-8572-d8964388a712"
       }
     ],
     [
       69,
       {
-        "topicID": "0.0.7164457",
-        "eventType": "paid",
-        "timestamp": "2025-10-30T22:15:10.982Z",
+        "topicID": "0.0.7163547",
+        "eventType": "verified",
+        "timestamp": "2025-10-30T21:04:50.414Z",
         "signerRole": "pharmacist",
         "actorIdHash": null,
         "dispenseCount": 0,
-        "maxDispenses": 12,
+        "maxDispenses": 1,
         "fraudAlert": null,
         "drugIds": [
-          "6118010120817",
-          "6118000070702"
+          "6118000160212",
+          "6118000040972"
         ],
-        "prescriptionId": "658911fe-a147-4bfe-a552-1ac1bdd27684"
+        "prescriptionId": "55e5705e-4965-41ef-8572-d8964388a712"
       }
     ],
     [
       70,
       {
-        "topicID": "0.0.7164457",
-        "eventType": "verified",
-        "timestamp": "2025-10-30T22:15:10.982Z",
-        "signerRole": "pharmacist",
+        "topicID": "0.0.7163547",
+        "eventType": "issued",
+        "timestamp": "2025-10-30T21:04:50.414Z",
+        "signerRole": "doctor",
         "actorIdHash": null,
         "dispenseCount": 0,
-        "maxDispenses": 12,
+        "maxDispenses": 1,
         "fraudAlert": null,
         "drugIds": [
-          "6118010120817",
-          "6118000070702"
+          "6118000160212",
+          "6118000040972"
         ],
-        "prescriptionId": "658911fe-a147-4bfe-a552-1ac1bdd27684"
+        "prescriptionId": "55e5705e-4965-41ef-8572-d8964388a712"
       }
     ],
     [
       71,
       {
-        "topicID": "0.0.7164457",
-        "eventType": "issued",
-        "timestamp": "2025-10-30T22:15:10.982Z",
-        "signerRole": "doctor",
+        "topicID": "0.0.7158736",
+        "eventType": "dispensed",
+        "timestamp": "2025-10-29T22:33:23.864Z",
+        "signerRole": "pharmacist",
         "actorIdHash": null,
-        "dispenseCount": 0,
+        "dispenseCount": 1,
         "maxDispenses": 12,
         "fraudAlert": null,
         "drugIds": [
-          "6118010120817",
-          "6118000070702"
+          "6118000080633",
+          "6118000041207"
         ],
-        "prescriptionId": "658911fe-a147-4bfe-a552-1ac1bdd27684"
+        "prescriptionId": "94227d83-5773-4045-bbcb-3770a25679bd"
       }
     ],
     [
       72,
       {
-        "topicID": "0.0.7163562",
-        "eventType": "dispensed",
-        "timestamp": "2025-10-30T21:08:22.544Z",
+        "topicID": "0.0.7158736",
+        "eventType": "paid",
+        "timestamp": "2025-10-29T22:33:23.864Z",
         "signerRole": "pharmacist",
         "actorIdHash": null,
-        "dispenseCount": 1,
-        "maxDispenses": 1,
+        "dispenseCount": 0,
+        "maxDispenses": 12,
         "fraudAlert": null,
         "drugIds": [
-          "6118000160212",
-          "6118000040972"
+          "6118000080633",
+          "6118000041207"
         ],
-        "prescriptionId": "89402578-63a5-40b4-ad85-136a79be8bd6"
+        "prescriptionId": "94227d83-5773-4045-bbcb-3770a25679bd"
       }
     ],
     [
       73,
       {
-        "topicID": "0.0.7163562",
-        "eventType": "paid",
-        "timestamp": "2025-10-30T21:08:22.544Z",
+        "topicID": "0.0.7158736",
+        "eventType": "verified",
+        "timestamp": "2025-10-29T22:33:23.864Z",
         "signerRole": "pharmacist",
         "actorIdHash": null,
         "dispenseCount": 0,
-        "maxDispenses": 1,
+        "maxDispenses": 12,
         "fraudAlert": null,
         "drugIds": [
-          "6118000160212",
-          "6118000040972"
+          "6118000080633",
+          "6118000041207"
         ],
-        "prescriptionId": "89402578-63a5-40b4-ad85-136a79be8bd6"
+        "prescriptionId": "94227d83-5773-4045-bbcb-3770a25679bd"
       }
     ],
     [
       74,
       {
-        "topicID": "0.0.7163562",
-        "eventType": "verified",
-        "timestamp": "2025-10-30T21:08:22.544Z",
-        "signerRole": "pharmacist",
+        "topicID": "0.0.7158736",
+        "eventType": "issued",
+        "timestamp": "2025-10-29T22:33:23.864Z",
+        "signerRole": "doctor",
         "actorIdHash": null,
         "dispenseCount": 0,
-        "maxDispenses": 1,
+        "maxDispenses": 12,
         "fraudAlert": null,
         "drugIds": [
-          "6118000160212",
-          "6118000040972"
+          "6118000080633",
+          "6118000041207"
         ],
-        "prescriptionId": "89402578-63a5-40b4-ad85-136a79be8bd6"
+        "prescriptionId": "94227d83-5773-4045-bbcb-3770a25679bd"
       }
     ],
     [
       75,
       {
-        "topicID": "0.0.7163562",
-        "eventType": "issued",
-        "timestamp": "2025-10-30T21:08:22.544Z",
-        "signerRole": "doctor",
+        "topicID": "0.0.7158668",
+        "eventType": "dispensed",
+        "timestamp": "2025-10-29T21:52:16.942Z",
+        "signerRole": "pharmacist",
         "actorIdHash": null,
-        "dispenseCount": 0,
-        "maxDispenses": 1,
+        "dispenseCount": 1,
+        "maxDispenses": 12,
         "fraudAlert": null,
         "drugIds": [
-          "6118000160212",
-          "6118000040972"
+          "6118010120817",
+          "6118000070702"
         ],
-        "prescriptionId": "89402578-63a5-40b4-ad85-136a79be8bd6"
+        "prescriptionId": "4b936286-24d6-4a2e-b389-27569166187e"
       }
     ],
     [
       76,
       {
-        "topicID": "0.0.7163547",
-        "eventType": "dispensed",
-        "timestamp": "2025-10-30T21:04:50.414Z",
+        "topicID": "0.0.7158668",
+        "eventType": "paid",
+        "timestamp": "2025-10-29T21:52:16.942Z",
         "signerRole": "pharmacist",
         "actorIdHash": null,
-        "dispenseCount": 1,
-        "maxDispenses": 1,
+        "dispenseCount": 0,
+        "maxDispenses": 12,
         "fraudAlert": null,
         "drugIds": [
-          "6118000160212",
-          "6118000040972"
+          "6118010120817",
+          "6118000070702"
         ],
-        "prescriptionId": "55e5705e-4965-41ef-8572-d8964388a712"
+        "prescriptionId": "4b936286-24d6-4a2e-b389-27569166187e"
       }
     ],
     [
       77,
       {
-        "topicID": "0.0.7163547",
-        "eventType": "paid",
-        "timestamp": "2025-10-30T21:04:50.414Z",
+        "topicID": "0.0.7158668",
+        "eventType": "verified",
+        "timestamp": "2025-10-29T21:52:16.942Z",
         "signerRole": "pharmacist",
         "actorIdHash": null,
         "dispenseCount": 0,
-        "maxDispenses": 1,
+        "maxDispenses": 12,
         "fraudAlert": null,
         "drugIds": [
-          "6118000160212",
-          "6118000040972"
+          "6118010120817",
+          "6118000070702"
         ],
-        "prescriptionId": "55e5705e-4965-41ef-8572-d8964388a712"
+        "prescriptionId": "4b936286-24d6-4a2e-b389-27569166187e"
       }
     ],
     [
       78,
       {
-        "topicID": "0.0.7163547",
-        "eventType": "verified",
-        "timestamp": "2025-10-30T21:04:50.414Z",
-        "signerRole": "pharmacist",
+        "topicID": "0.0.7158668",
+        "eventType": "issued",
+        "timestamp": "2025-10-29T21:52:16.942Z",
+        "signerRole": "doctor",
         "actorIdHash": null,
         "dispenseCount": 0,
-        "maxDispenses": 1,
+        "maxDispenses": 12,
         "fraudAlert": null,
         "drugIds": [
-          "6118000160212",
-          "6118000040972"
+          "6118010120817",
+          "6118000070702"
         ],
-        "prescriptionId": "55e5705e-4965-41ef-8572-d8964388a712"
+        "prescriptionId": "4b936286-24d6-4a2e-b389-27569166187e"
       }
     ],
     [
       79,
       {
-        "topicID": "0.0.7163547",
-        "eventType": "issued",
-        "timestamp": "2025-10-30T21:04:50.414Z",
-        "signerRole": "doctor",
+        "topicID": "0.0.7157208",
+        "eventType": "paid",
+        "timestamp": "2025-10-29T14:57:33.901Z",
+        "signerRole": "pharmacist",
         "actorIdHash": null,
         "dispenseCount": 0,
-        "maxDispenses": 1,
+        "maxDispenses": 12,
         "fraudAlert": null,
         "drugIds": [
-          "6118000160212",
-          "6118000040972"
+          "6118010120817",
+          "6118000070702"
         ],
-        "prescriptionId": "55e5705e-4965-41ef-8572-d8964388a712"
+        "prescriptionId": "883a686e-33c2-4609-ab73-9d013080b8b7"
       }
     ],
     [
       80,
       {
-        "topicID": "0.0.7158736",
-        "eventType": "dispensed",
-        "timestamp": "2025-10-29T22:33:23.864Z",
+        "topicID": "0.0.7157208",
+        "eventType": "verified",
+        "timestamp": "2025-10-29T14:57:33.901Z",
         "signerRole": "pharmacist",
         "actorIdHash": null,
-        "dispenseCount": 1,
+        "dispenseCount": 0,
         "maxDispenses": 12,
         "fraudAlert": null,
         "drugIds": [
-          "6118000080633",
-          "6118000041207"
+          "6118010120817",
+          "6118000070702"
         ],
-        "prescriptionId": "94227d83-5773-4045-bbcb-3770a25679bd"
+        "prescriptionId": "883a686e-33c2-4609-ab73-9d013080b8b7"
       }
     ],
     [
       81,
       {
-        "topicID": "0.0.7158736",
-        "eventType": "paid",
-        "timestamp": "2025-10-29T22:33:23.864Z",
-        "signerRole": "pharmacist",
+        "topicID": "0.0.7157208",
+        "eventType": "issued",
+        "timestamp": "2025-10-29T14:57:33.901Z",
+        "signerRole": "doctor",
         "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 12,
         "fraudAlert": null,
         "drugIds": [
-          "6118000080633",
-          "6118000041207"
+          "6118010120817",
+          "6118000070702"
         ],
-        "prescriptionId": "94227d83-5773-4045-bbcb-3770a25679bd"
+        "prescriptionId": "883a686e-33c2-4609-ab73-9d013080b8b7"
       }
     ],
     [
       82,
       {
-        "topicID": "0.0.7158736",
-        "eventType": "verified",
-        "timestamp": "2025-10-29T22:33:23.864Z",
+        "topicID": "0.0.7157179",
+        "eventType": "paid",
+        "timestamp": "2025-10-29T14:52:48.232Z",
         "signerRole": "pharmacist",
         "actorIdHash": null,
         "dispenseCount": 0,
-        "maxDispenses": 12,
+        "maxDispenses": 1,
         "fraudAlert": null,
         "drugIds": [
-          "6118000080633",
-          "6118000041207"
+          "6118000160212",
+          "6118000040972"
         ],
-        "prescriptionId": "94227d83-5773-4045-bbcb-3770a25679bd"
+        "prescriptionId": "8896f98d-756a-46bf-98b0-3ad6738d224f"
       }
     ],
     [
       83,
       {
-        "topicID": "0.0.7158736",
-        "eventType": "issued",
-        "timestamp": "2025-10-29T22:33:23.864Z",
-        "signerRole": "doctor",
+        "topicID": "0.0.7157179",
+        "eventType": "verified",
+        "timestamp": "2025-10-29T14:52:48.232Z",
+        "signerRole": "pharmacist",
         "actorIdHash": null,
         "dispenseCount": 0,
-        "maxDispenses": 12,
+        "maxDispenses": 1,
         "fraudAlert": null,
         "drugIds": [
-          "6118000080633",
-          "6118000041207"
+          "6118000160212",
+          "6118000040972"
         ],
-        "prescriptionId": "94227d83-5773-4045-bbcb-3770a25679bd"
+        "prescriptionId": "8896f98d-756a-46bf-98b0-3ad6738d224f"
       }
     ],
     [
       84,
       {
-        "topicID": "0.0.7158668",
-        "eventType": "dispensed",
-        "timestamp": "2025-10-29T21:52:16.942Z",
-        "signerRole": "pharmacist",
+        "topicID": "0.0.7157179",
+        "eventType": "issued",
+        "timestamp": "2025-10-29T14:52:48.232Z",
+        "signerRole": "doctor",
         "actorIdHash": null,
-        "dispenseCount": 1,
-        "maxDispenses": 12,
+        "dispenseCount": 0,
+        "maxDispenses": 1,
         "fraudAlert": null,
         "drugIds": [
-          "6118010120817",
-          "6118000070702"
+          "6118000160212",
+          "6118000040972"
         ],
-        "prescriptionId": "4b936286-24d6-4a2e-b389-27569166187e"
+        "prescriptionId": "8896f98d-756a-46bf-98b0-3ad6738d224f"
       }
     ],
     [
       85,
       {
-        "topicID": "0.0.7158668",
+        "topicID": "0.0.7157091",
         "eventType": "paid",
-        "timestamp": "2025-10-29T21:52:16.942Z",
+        "timestamp": "2025-10-29T14:37:42.398Z",
         "signerRole": "pharmacist",
         "actorIdHash": null,
         "dispenseCount": 0,
-        "maxDispenses": 12,
+        "maxDispenses": 1,
         "fraudAlert": null,
         "drugIds": [
-          "6118010120817",
-          "6118000070702"
+          "6118000160212",
+          "6118000040972"
         ],
-        "prescriptionId": "4b936286-24d6-4a2e-b389-27569166187e"
+        "prescriptionId": "d8fe11ff-25bb-4979-89d7-727542899b56"
       }
     ],
     [
       86,
       {
-        "topicID": "0.0.7158668",
+        "topicID": "0.0.7157091",
         "eventType": "verified",
-        "timestamp": "2025-10-29T21:52:16.942Z",
+        "timestamp": "2025-10-29T14:37:42.398Z",
         "signerRole": "pharmacist",
         "actorIdHash": null,
         "dispenseCount": 0,
-        "maxDispenses": 12,
+        "maxDispenses": 1,
         "fraudAlert": null,
         "drugIds": [
-          "6118010120817",
-          "6118000070702"
+          "6118000160212",
+          "6118000040972"
         ],
-        "prescriptionId": "4b936286-24d6-4a2e-b389-27569166187e"
+        "prescriptionId": "d8fe11ff-25bb-4979-89d7-727542899b56"
       }
     ],
     [
       87,
       {
-        "topicID": "0.0.7158668",
+        "topicID": "0.0.7157091",
         "eventType": "issued",
-        "timestamp": "2025-10-29T21:52:16.942Z",
+        "timestamp": "2025-10-29T14:37:42.398Z",
         "signerRole": "doctor",
         "actorIdHash": null,
         "dispenseCount": 0,
-        "maxDispenses": 12,
+        "maxDispenses": 1,
         "fraudAlert": null,
         "drugIds": [
-          "6118010120817",
-          "6118000070702"
+          "6118000160212",
+          "6118000040972"
         ],
-        "prescriptionId": "4b936286-24d6-4a2e-b389-27569166187e"
+        "prescriptionId": "d8fe11ff-25bb-4979-89d7-727542899b56"
       }
     ],
     [
       88,
       {
-        "topicID": "0.0.7157208",
+        "topicID": "0.0.7154797",
         "eventType": "paid",
-        "timestamp": "2025-10-29T14:57:33.901Z",
+        "timestamp": "2025-10-29T05:08:38.220Z",
         "signerRole": "pharmacist",
         "actorIdHash": null,
         "dispenseCount": 0,
@@ -1684,15 +1595,15 @@
           "6118010120817",
           "6118000070702"
         ],
-        "prescriptionId": "883a686e-33c2-4609-ab73-9d013080b8b7"
+        "prescriptionId": "cfefd066-5989-4d27-b7eb-3034026acf8e"
       }
     ],
     [
       89,
       {
-        "topicID": "0.0.7157208",
+        "topicID": "0.0.7154797",
         "eventType": "verified",
-        "timestamp": "2025-10-29T14:57:33.901Z",
+        "timestamp": "2025-10-29T05:08:38.220Z",
         "signerRole": "pharmacist",
         "actorIdHash": null,
         "dispenseCount": 0,
@@ -1702,15 +1613,15 @@
           "6118010120817",
           "6118000070702"
         ],
-        "prescriptionId": "883a686e-33c2-4609-ab73-9d013080b8b7"
+        "prescriptionId": "cfefd066-5989-4d27-b7eb-3034026acf8e"
       }
     ],
     [
       90,
       {
-        "topicID": "0.0.7157208",
+        "topicID": "0.0.7154797",
         "eventType": "issued",
-        "timestamp": "2025-10-29T14:57:33.901Z",
+        "timestamp": "2025-10-29T05:08:38.220Z",
         "signerRole": "doctor",
         "actorIdHash": null,
         "dispenseCount": 0,
@@ -1720,33 +1631,33 @@
           "6118010120817",
           "6118000070702"
         ],
-        "prescriptionId": "883a686e-33c2-4609-ab73-9d013080b8b7"
+        "prescriptionId": "cfefd066-5989-4d27-b7eb-3034026acf8e"
       }
     ],
     [
       91,
       {
-        "topicID": "0.0.7157179",
-        "eventType": "paid",
-        "timestamp": "2025-10-29T14:52:48.232Z",
+        "topicID": "0.0.7154678",
+        "eventType": "dispensed",
+        "timestamp": "2025-10-29T04:09:23.480Z",
         "signerRole": "pharmacist",
         "actorIdHash": null,
-        "dispenseCount": 0,
+        "dispenseCount": 1,
         "maxDispenses": 1,
         "fraudAlert": null,
         "drugIds": [
           "6118000160212",
           "6118000040972"
         ],
-        "prescriptionId": "8896f98d-756a-46bf-98b0-3ad6738d224f"
+        "prescriptionId": "c9c69dc3-194d-4288-8cdc-6e7000b08709"
       }
     ],
     [
       92,
       {
-        "topicID": "0.0.7157179",
-        "eventType": "verified",
-        "timestamp": "2025-10-29T14:52:48.232Z",
+        "topicID": "0.0.7154678",
+        "eventType": "paid",
+        "timestamp": "2025-10-29T04:09:23.480Z",
         "signerRole": "pharmacist",
         "actorIdHash": null,
         "dispenseCount": 0,
@@ -1756,16 +1667,16 @@
           "6118000160212",
           "6118000040972"
         ],
-        "prescriptionId": "8896f98d-756a-46bf-98b0-3ad6738d224f"
+        "prescriptionId": "c9c69dc3-194d-4288-8cdc-6e7000b08709"
       }
     ],
     [
       93,
       {
-        "topicID": "0.0.7157179",
-        "eventType": "issued",
-        "timestamp": "2025-10-29T14:52:48.232Z",
-        "signerRole": "doctor",
+        "topicID": "0.0.7154678",
+        "eventType": "verified",
+        "timestamp": "2025-10-29T04:09:23.480Z",
+        "signerRole": "pharmacist",
         "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 1,
@@ -1774,16 +1685,16 @@
           "6118000160212",
           "6118000040972"
         ],
-        "prescriptionId": "8896f98d-756a-46bf-98b0-3ad6738d224f"
+        "prescriptionId": "c9c69dc3-194d-4288-8cdc-6e7000b08709"
       }
     ],
     [
       94,
       {
-        "topicID": "0.0.7157091",
-        "eventType": "paid",
-        "timestamp": "2025-10-29T14:37:42.398Z",
-        "signerRole": "pharmacist",
+        "topicID": "0.0.7154678",
+        "eventType": "issued",
+        "timestamp": "2025-10-29T04:09:23.480Z",
+        "signerRole": "doctor",
         "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 1,
@@ -1792,34 +1703,34 @@
           "6118000160212",
           "6118000040972"
         ],
-        "prescriptionId": "d8fe11ff-25bb-4979-89d7-727542899b56"
+        "prescriptionId": "c9c69dc3-194d-4288-8cdc-6e7000b08709"
       }
     ],
     [
       95,
       {
-        "topicID": "0.0.7157091",
-        "eventType": "verified",
-        "timestamp": "2025-10-29T14:37:42.398Z",
+        "topicID": "0.0.7154670",
+        "eventType": "dispensed",
+        "timestamp": "2025-10-29T04:07:40.541Z",
         "signerRole": "pharmacist",
         "actorIdHash": null,
-        "dispenseCount": 0,
+        "dispenseCount": 1,
         "maxDispenses": 1,
         "fraudAlert": null,
         "drugIds": [
           "6118000160212",
           "6118000040972"
         ],
-        "prescriptionId": "d8fe11ff-25bb-4979-89d7-727542899b56"
+        "prescriptionId": "dcbeb53c-9972-4715-9b09-95bab7a561f7"
       }
     ],
     [
       96,
       {
-        "topicID": "0.0.7157091",
-        "eventType": "issued",
-        "timestamp": "2025-10-29T14:37:42.398Z",
-        "signerRole": "doctor",
+        "topicID": "0.0.7154670",
+        "eventType": "paid",
+        "timestamp": "2025-10-29T04:07:40.541Z",
+        "signerRole": "pharmacist",
         "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 1,
@@ -1828,340 +1739,340 @@
           "6118000160212",
           "6118000040972"
         ],
-        "prescriptionId": "d8fe11ff-25bb-4979-89d7-727542899b56"
+        "prescriptionId": "dcbeb53c-9972-4715-9b09-95bab7a561f7"
       }
     ],
     [
       97,
       {
-        "topicID": "0.0.7154797",
-        "eventType": "paid",
-        "timestamp": "2025-10-29T05:08:38.220Z",
+        "topicID": "0.0.7154670",
+        "eventType": "verified",
+        "timestamp": "2025-10-29T04:07:40.541Z",
         "signerRole": "pharmacist",
         "actorIdHash": null,
         "dispenseCount": 0,
-        "maxDispenses": 12,
+        "maxDispenses": 1,
         "fraudAlert": null,
         "drugIds": [
-          "6118010120817",
-          "6118000070702"
+          "6118000160212",
+          "6118000040972"
         ],
-        "prescriptionId": "cfefd066-5989-4d27-b7eb-3034026acf8e"
+        "prescriptionId": "dcbeb53c-9972-4715-9b09-95bab7a561f7"
       }
     ],
     [
       98,
       {
-        "topicID": "0.0.7154797",
-        "eventType": "verified",
-        "timestamp": "2025-10-29T05:08:38.220Z",
-        "signerRole": "pharmacist",
+        "topicID": "0.0.7154670",
+        "eventType": "issued",
+        "timestamp": "2025-10-29T04:07:40.541Z",
+        "signerRole": "doctor",
         "actorIdHash": null,
         "dispenseCount": 0,
-        "maxDispenses": 12,
+        "maxDispenses": 1,
         "fraudAlert": null,
         "drugIds": [
-          "6118010120817",
-          "6118000070702"
+          "6118000160212",
+          "6118000040972"
         ],
-        "prescriptionId": "cfefd066-5989-4d27-b7eb-3034026acf8e"
+        "prescriptionId": "dcbeb53c-9972-4715-9b09-95bab7a561f7"
       }
     ],
     [
       99,
       {
-        "topicID": "0.0.7154797",
-        "eventType": "issued",
-        "timestamp": "2025-10-29T05:08:38.220Z",
-        "signerRole": "doctor",
+        "topicID": "0.0.7154658",
+        "eventType": "dispensed",
+        "timestamp": "2025-10-29T04:03:58.726Z",
+        "signerRole": "pharmacist",
         "actorIdHash": null,
-        "dispenseCount": 0,
+        "dispenseCount": 1,
         "maxDispenses": 12,
         "fraudAlert": null,
         "drugIds": [
-          "6118010120817",
-          "6118000070702"
+          "6118000080633",
+          "6118000041207"
         ],
-        "prescriptionId": "cfefd066-5989-4d27-b7eb-3034026acf8e"
+        "prescriptionId": "f248e489-99d7-4262-913c-dc2d181ac1ce"
       }
     ],
     [
       100,
       {
-        "topicID": "0.0.7154678",
-        "eventType": "dispensed",
-        "timestamp": "2025-10-29T04:09:23.480Z",
+        "topicID": "0.0.7154658",
+        "eventType": "paid",
+        "timestamp": "2025-10-29T04:03:58.726Z",
         "signerRole": "pharmacist",
         "actorIdHash": null,
-        "dispenseCount": 1,
-        "maxDispenses": 1,
+        "dispenseCount": 0,
+        "maxDispenses": 12,
         "fraudAlert": null,
         "drugIds": [
-          "6118000160212",
-          "6118000040972"
+          "6118000080633",
+          "6118000041207"
         ],
-        "prescriptionId": "c9c69dc3-194d-4288-8cdc-6e7000b08709"
+        "prescriptionId": "f248e489-99d7-4262-913c-dc2d181ac1ce"
       }
     ],
     [
       101,
       {
-        "topicID": "0.0.7154678",
-        "eventType": "paid",
-        "timestamp": "2025-10-29T04:09:23.480Z",
+        "topicID": "0.0.7154658",
+        "eventType": "verified",
+        "timestamp": "2025-10-29T04:03:58.726Z",
         "signerRole": "pharmacist",
         "actorIdHash": null,
         "dispenseCount": 0,
-        "maxDispenses": 1,
+        "maxDispenses": 12,
         "fraudAlert": null,
         "drugIds": [
-          "6118000160212",
-          "6118000040972"
+          "6118000080633",
+          "6118000041207"
         ],
-        "prescriptionId": "c9c69dc3-194d-4288-8cdc-6e7000b08709"
+        "prescriptionId": "f248e489-99d7-4262-913c-dc2d181ac1ce"
       }
     ],
     [
       102,
       {
-        "topicID": "0.0.7154678",
-        "eventType": "verified",
-        "timestamp": "2025-10-29T04:09:23.480Z",
-        "signerRole": "pharmacist",
+        "topicID": "0.0.7154658",
+        "eventType": "issued",
+        "timestamp": "2025-10-29T04:03:58.726Z",
+        "signerRole": "doctor",
         "actorIdHash": null,
         "dispenseCount": 0,
-        "maxDispenses": 1,
+        "maxDispenses": 12,
         "fraudAlert": null,
         "drugIds": [
-          "6118000160212",
-          "6118000040972"
+          "6118000080633",
+          "6118000041207"
         ],
-        "prescriptionId": "c9c69dc3-194d-4288-8cdc-6e7000b08709"
+        "prescriptionId": "f248e489-99d7-4262-913c-dc2d181ac1ce"
       }
     ],
     [
       103,
       {
-        "topicID": "0.0.7154678",
-        "eventType": "issued",
-        "timestamp": "2025-10-29T04:09:23.480Z",
-        "signerRole": "doctor",
+        "topicID": "0.0.7154649",
+        "eventType": "dispensed",
+        "timestamp": "2025-10-29T04:00:28.750Z",
+        "signerRole": "pharmacist",
         "actorIdHash": null,
-        "dispenseCount": 0,
-        "maxDispenses": 1,
+        "dispenseCount": 1,
+        "maxDispenses": 12,
         "fraudAlert": null,
         "drugIds": [
-          "6118000160212",
-          "6118000040972"
+          "6118010120817",
+          "6118000070702"
         ],
-        "prescriptionId": "c9c69dc3-194d-4288-8cdc-6e7000b08709"
+        "prescriptionId": "1b814e21-1ba6-4923-b36d-8f399c31961b"
       }
     ],
     [
       104,
       {
-        "topicID": "0.0.7154670",
-        "eventType": "dispensed",
-        "timestamp": "2025-10-29T04:07:40.541Z",
+        "topicID": "0.0.7154649",
+        "eventType": "paid",
+        "timestamp": "2025-10-29T04:00:28.750Z",
         "signerRole": "pharmacist",
         "actorIdHash": null,
-        "dispenseCount": 1,
-        "maxDispenses": 1,
+        "dispenseCount": 0,
+        "maxDispenses": 12,
         "fraudAlert": null,
         "drugIds": [
-          "6118000160212",
-          "6118000040972"
+          "6118010120817",
+          "6118000070702"
         ],
-        "prescriptionId": "dcbeb53c-9972-4715-9b09-95bab7a561f7"
+        "prescriptionId": "1b814e21-1ba6-4923-b36d-8f399c31961b"
       }
     ],
     [
       105,
       {
-        "topicID": "0.0.7154670",
-        "eventType": "paid",
-        "timestamp": "2025-10-29T04:07:40.541Z",
+        "topicID": "0.0.7154649",
+        "eventType": "verified",
+        "timestamp": "2025-10-29T04:00:28.750Z",
         "signerRole": "pharmacist",
         "actorIdHash": null,
         "dispenseCount": 0,
-        "maxDispenses": 1,
+        "maxDispenses": 12,
         "fraudAlert": null,
         "drugIds": [
-          "6118000160212",
-          "6118000040972"
+          "6118010120817",
+          "6118000070702"
         ],
-        "prescriptionId": "dcbeb53c-9972-4715-9b09-95bab7a561f7"
+        "prescriptionId": "1b814e21-1ba6-4923-b36d-8f399c31961b"
       }
     ],
     [
       106,
       {
-        "topicID": "0.0.7154670",
-        "eventType": "verified",
-        "timestamp": "2025-10-29T04:07:40.541Z",
-        "signerRole": "pharmacist",
+        "topicID": "0.0.7154649",
+        "eventType": "issued",
+        "timestamp": "2025-10-29T04:00:28.750Z",
+        "signerRole": "doctor",
         "actorIdHash": null,
         "dispenseCount": 0,
-        "maxDispenses": 1,
+        "maxDispenses": 12,
         "fraudAlert": null,
         "drugIds": [
-          "6118000160212",
-          "6118000040972"
+          "6118010120817",
+          "6118000070702"
         ],
-        "prescriptionId": "dcbeb53c-9972-4715-9b09-95bab7a561f7"
+        "prescriptionId": "1b814e21-1ba6-4923-b36d-8f399c31961b"
       }
     ],
     [
       107,
       {
-        "topicID": "0.0.7154670",
-        "eventType": "issued",
-        "timestamp": "2025-10-29T04:07:40.541Z",
-        "signerRole": "doctor",
+        "topicID": "0.0.7154641",
+        "eventType": "dispensed",
+        "timestamp": "2025-10-29T03:56:57.613Z",
+        "signerRole": "pharmacist",
         "actorIdHash": null,
-        "dispenseCount": 0,
+        "dispenseCount": 1,
         "maxDispenses": 1,
         "fraudAlert": null,
         "drugIds": [
           "6118000160212",
           "6118000040972"
         ],
-        "prescriptionId": "dcbeb53c-9972-4715-9b09-95bab7a561f7"
+        "prescriptionId": "9083fa64-f55a-4ce8-8e39-c7a27e20ebcd"
       }
     ],
     [
       108,
       {
-        "topicID": "0.0.7154658",
-        "eventType": "dispensed",
-        "timestamp": "2025-10-29T04:03:58.726Z",
+        "topicID": "0.0.7154641",
+        "eventType": "paid",
+        "timestamp": "2025-10-29T03:56:57.613Z",
         "signerRole": "pharmacist",
         "actorIdHash": null,
-        "dispenseCount": 1,
-        "maxDispenses": 12,
+        "dispenseCount": 0,
+        "maxDispenses": 1,
         "fraudAlert": null,
         "drugIds": [
-          "6118000080633",
-          "6118000041207"
+          "6118000160212",
+          "6118000040972"
         ],
-        "prescriptionId": "f248e489-99d7-4262-913c-dc2d181ac1ce"
+        "prescriptionId": "9083fa64-f55a-4ce8-8e39-c7a27e20ebcd"
       }
     ],
     [
       109,
       {
-        "topicID": "0.0.7154658",
-        "eventType": "paid",
-        "timestamp": "2025-10-29T04:03:58.726Z",
+        "topicID": "0.0.7154641",
+        "eventType": "verified",
+        "timestamp": "2025-10-29T03:56:57.613Z",
         "signerRole": "pharmacist",
         "actorIdHash": null,
         "dispenseCount": 0,
-        "maxDispenses": 12,
+        "maxDispenses": 1,
         "fraudAlert": null,
         "drugIds": [
-          "6118000080633",
-          "6118000041207"
+          "6118000160212",
+          "6118000040972"
         ],
-        "prescriptionId": "f248e489-99d7-4262-913c-dc2d181ac1ce"
+        "prescriptionId": "9083fa64-f55a-4ce8-8e39-c7a27e20ebcd"
       }
     ],
     [
       110,
       {
-        "topicID": "0.0.7154658",
-        "eventType": "verified",
-        "timestamp": "2025-10-29T04:03:58.726Z",
-        "signerRole": "pharmacist",
+        "topicID": "0.0.7154641",
+        "eventType": "issued",
+        "timestamp": "2025-10-29T03:56:57.613Z",
+        "signerRole": "doctor",
         "actorIdHash": null,
         "dispenseCount": 0,
-        "maxDispenses": 12,
+        "maxDispenses": 1,
         "fraudAlert": null,
         "drugIds": [
-          "6118000080633",
-          "6118000041207"
+          "6118000160212",
+          "6118000040972"
         ],
-        "prescriptionId": "f248e489-99d7-4262-913c-dc2d181ac1ce"
+        "prescriptionId": "9083fa64-f55a-4ce8-8e39-c7a27e20ebcd"
       }
     ],
     [
       111,
       {
-        "topicID": "0.0.7154658",
-        "eventType": "issued",
-        "timestamp": "2025-10-29T04:03:58.726Z",
-        "signerRole": "doctor",
+        "topicID": "0.0.7154637",
+        "eventType": "dispensed",
+        "timestamp": "2025-10-29T03:54:14.969Z",
+        "signerRole": "pharmacist",
         "actorIdHash": null,
-        "dispenseCount": 0,
-        "maxDispenses": 12,
+        "dispenseCount": 1,
+        "maxDispenses": 1,
         "fraudAlert": null,
         "drugIds": [
-          "6118000080633",
-          "6118000041207"
+          "6118000160212",
+          "6118000040972"
         ],
-        "prescriptionId": "f248e489-99d7-4262-913c-dc2d181ac1ce"
+        "prescriptionId": "b97a75ac-6d6a-43b1-b059-8213fdb306f8"
       }
     ],
     [
       112,
       {
-        "topicID": "0.0.7154649",
-        "eventType": "dispensed",
-        "timestamp": "2025-10-29T04:00:28.750Z",
+        "topicID": "0.0.7154637",
+        "eventType": "paid",
+        "timestamp": "2025-10-29T03:54:14.969Z",
         "signerRole": "pharmacist",
         "actorIdHash": null,
-        "dispenseCount": 1,
-        "maxDispenses": 12,
+        "dispenseCount": 0,
+        "maxDispenses": 1,
         "fraudAlert": null,
         "drugIds": [
-          "6118010120817",
-          "6118000070702"
+          "6118000160212",
+          "6118000040972"
         ],
-        "prescriptionId": "1b814e21-1ba6-4923-b36d-8f399c31961b"
+        "prescriptionId": "b97a75ac-6d6a-43b1-b059-8213fdb306f8"
       }
     ],
     [
       113,
       {
-        "topicID": "0.0.7154649",
-        "eventType": "paid",
-        "timestamp": "2025-10-29T04:00:28.750Z",
+        "topicID": "0.0.7154637",
+        "eventType": "verified",
+        "timestamp": "2025-10-29T03:54:14.969Z",
         "signerRole": "pharmacist",
         "actorIdHash": null,
         "dispenseCount": 0,
-        "maxDispenses": 12,
+        "maxDispenses": 1,
         "fraudAlert": null,
         "drugIds": [
-          "6118010120817",
-          "6118000070702"
+          "6118000160212",
+          "6118000040972"
         ],
-        "prescriptionId": "1b814e21-1ba6-4923-b36d-8f399c31961b"
+        "prescriptionId": "b97a75ac-6d6a-43b1-b059-8213fdb306f8"
       }
     ],
     [
       114,
       {
-        "topicID": "0.0.7154649",
-        "eventType": "verified",
-        "timestamp": "2025-10-29T04:00:28.750Z",
-        "signerRole": "pharmacist",
+        "topicID": "0.0.7154637",
+        "eventType": "issued",
+        "timestamp": "2025-10-29T03:54:14.969Z",
+        "signerRole": "doctor",
         "actorIdHash": null,
         "dispenseCount": 0,
-        "maxDispenses": 12,
+        "maxDispenses": 1,
         "fraudAlert": null,
         "drugIds": [
-          "6118010120817",
-          "6118000070702"
+          "6118000160212",
+          "6118000040972"
         ],
-        "prescriptionId": "1b814e21-1ba6-4923-b36d-8f399c31961b"
+        "prescriptionId": "b97a75ac-6d6a-43b1-b059-8213fdb306f8"
       }
     ],
     [
       115,
       {
-        "topicID": "0.0.7154649",
-        "eventType": "issued",
-        "timestamp": "2025-10-29T04:00:28.750Z",
-        "signerRole": "doctor",
+        "topicID": "0.0.7154629",
+        "eventType": "paid",
+        "timestamp": "2025-10-29T03:51:02.878Z",
+        "signerRole": "pharmacist",
         "actorIdHash": null,
         "dispenseCount": 0,
         "maxDispenses": 12,
@@ -2170,209 +2081,47 @@
           "6118010120817",
           "6118000070702"
         ],
-        "prescriptionId": "1b814e21-1ba6-4923-b36d-8f399c31961b"
+        "prescriptionId": "af4d9286-963e-4f5a-b038-2e26ea48d245"
       }
     ],
     [
       116,
       {
-        "topicID": "0.0.7154641",
-        "eventType": "dispensed",
-        "timestamp": "2025-10-29T03:56:57.613Z",
+        "topicID": "0.0.7154629",
+        "eventType": "verified",
+        "timestamp": "2025-10-29T03:51:02.878Z",
         "signerRole": "pharmacist",
         "actorIdHash": null,
-        "dispenseCount": 1,
-        "maxDispenses": 1,
+        "dispenseCount": 0,
+        "maxDispenses": 12,
         "fraudAlert": null,
         "drugIds": [
-          "6118000160212",
-          "6118000040972"
+          "6118010120817",
+          "6118000070702"
         ],
-        "prescriptionId": "9083fa64-f55a-4ce8-8e39-c7a27e20ebcd"
+        "prescriptionId": "af4d9286-963e-4f5a-b038-2e26ea48d245"
       }
     ],
     [
       117,
       {
-        "topicID": "0.0.7154641",
-        "eventType": "paid",
-        "timestamp": "2025-10-29T03:56:57.613Z",
-        "signerRole": "pharmacist",
+        "topicID": "0.0.7154629",
+        "eventType": "issued",
+        "timestamp": "2025-10-29T03:51:02.878Z",
+        "signerRole": "doctor",
         "actorIdHash": null,
         "dispenseCount": 0,
-        "maxDispenses": 1,
+        "maxDispenses": 12,
         "fraudAlert": null,
         "drugIds": [
-          "6118000160212",
-          "6118000040972"
+          "6118010120817",
+          "6118000070702"
         ],
-        "prescriptionId": "9083fa64-f55a-4ce8-8e39-c7a27e20ebcd"
+        "prescriptionId": "af4d9286-963e-4f5a-b038-2e26ea48d245"
       }
     ],
     [
       118,
-      {
-        "topicID": "0.0.7154641",
-        "eventType": "verified",
-        "timestamp": "2025-10-29T03:56:57.613Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": null,
-        "dispenseCount": 0,
-        "maxDispenses": 1,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118000160212",
-          "6118000040972"
-        ],
-        "prescriptionId": "9083fa64-f55a-4ce8-8e39-c7a27e20ebcd"
-      }
-    ],
-    [
-      119,
-      {
-        "topicID": "0.0.7154641",
-        "eventType": "issued",
-        "timestamp": "2025-10-29T03:56:57.613Z",
-        "signerRole": "doctor",
-        "actorIdHash": null,
-        "dispenseCount": 0,
-        "maxDispenses": 1,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118000160212",
-          "6118000040972"
-        ],
-        "prescriptionId": "9083fa64-f55a-4ce8-8e39-c7a27e20ebcd"
-      }
-    ],
-    [
-      120,
-      {
-        "topicID": "0.0.7154637",
-        "eventType": "dispensed",
-        "timestamp": "2025-10-29T03:54:14.969Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": null,
-        "dispenseCount": 1,
-        "maxDispenses": 1,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118000160212",
-          "6118000040972"
-        ],
-        "prescriptionId": "b97a75ac-6d6a-43b1-b059-8213fdb306f8"
-      }
-    ],
-    [
-      121,
-      {
-        "topicID": "0.0.7154637",
-        "eventType": "paid",
-        "timestamp": "2025-10-29T03:54:14.969Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": null,
-        "dispenseCount": 0,
-        "maxDispenses": 1,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118000160212",
-          "6118000040972"
-        ],
-        "prescriptionId": "b97a75ac-6d6a-43b1-b059-8213fdb306f8"
-      }
-    ],
-    [
-      122,
-      {
-        "topicID": "0.0.7154637",
-        "eventType": "verified",
-        "timestamp": "2025-10-29T03:54:14.969Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": null,
-        "dispenseCount": 0,
-        "maxDispenses": 1,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118000160212",
-          "6118000040972"
-        ],
-        "prescriptionId": "b97a75ac-6d6a-43b1-b059-8213fdb306f8"
-      }
-    ],
-    [
-      123,
-      {
-        "topicID": "0.0.7154637",
-        "eventType": "issued",
-        "timestamp": "2025-10-29T03:54:14.969Z",
-        "signerRole": "doctor",
-        "actorIdHash": null,
-        "dispenseCount": 0,
-        "maxDispenses": 1,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118000160212",
-          "6118000040972"
-        ],
-        "prescriptionId": "b97a75ac-6d6a-43b1-b059-8213fdb306f8"
-      }
-    ],
-    [
-      124,
-      {
-        "topicID": "0.0.7154629",
-        "eventType": "paid",
-        "timestamp": "2025-10-29T03:51:02.878Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": null,
-        "dispenseCount": 0,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "af4d9286-963e-4f5a-b038-2e26ea48d245"
-      }
-    ],
-    [
-      125,
-      {
-        "topicID": "0.0.7154629",
-        "eventType": "verified",
-        "timestamp": "2025-10-29T03:51:02.878Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": null,
-        "dispenseCount": 0,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "af4d9286-963e-4f5a-b038-2e26ea48d245"
-      }
-    ],
-    [
-      126,
-      {
-        "topicID": "0.0.7154629",
-        "eventType": "issued",
-        "timestamp": "2025-10-29T03:51:02.878Z",
-        "signerRole": "doctor",
-        "actorIdHash": null,
-        "dispenseCount": 0,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "af4d9286-963e-4f5a-b038-2e26ea48d245"
-      }
-    ],
-    [
-      127,
       {
         "topicID": "0.0.7154626",
         "eventType": "issued",
@@ -2390,7 +2139,7 @@
       }
     ],
     [
-      128,
+      119,
       {
         "topicID": "0.0.7154615",
         "eventType": "issued",
@@ -2408,7 +2157,7 @@
       }
     ],
     [
-      129,
+      120,
       {
         "topicID": "0.0.7154604",
         "eventType": "issued",
@@ -2426,7 +2175,7 @@
       }
     ],
     [
-      130,
+      121,
       {
         "topicID": "0.0.7154602",
         "eventType": "issued",
@@ -2444,7 +2193,7 @@
       }
     ],
     [
-      131,
+      122,
       {
         "topicID": "0.0.7154584",
         "eventType": "issued",
@@ -2462,7 +2211,7 @@
       }
     ],
     [
-      132,
+      123,
       {
         "topicID": "0.0.7154564",
         "eventType": "dispensed",
@@ -2477,14 +2226,176 @@
           "6118000070702"
         ],
         "prescriptionId": "f0a03cb1-01c8-4cb8-a661-82b0be507485"
+      }
+    ],
+    [
+      124,
+      {
+        "topicID": "0.0.7154564",
+        "eventType": "paid",
+        "timestamp": "2025-10-29T03:14:58.524Z",
+        "signerRole": "pharmacist",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 12,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118010120817",
+          "6118000070702"
+        ],
+        "prescriptionId": "f0a03cb1-01c8-4cb8-a661-82b0be507485"
+      }
+    ],
+    [
+      125,
+      {
+        "topicID": "0.0.7154564",
+        "eventType": "verified",
+        "timestamp": "2025-10-29T03:14:58.524Z",
+        "signerRole": "pharmacist",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 12,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118010120817",
+          "6118000070702"
+        ],
+        "prescriptionId": "f0a03cb1-01c8-4cb8-a661-82b0be507485"
+      }
+    ],
+    [
+      126,
+      {
+        "topicID": "0.0.7154564",
+        "eventType": "issued",
+        "timestamp": "2025-10-29T03:14:58.524Z",
+        "signerRole": "doctor",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 12,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118010120817",
+          "6118000070702"
+        ],
+        "prescriptionId": "f0a03cb1-01c8-4cb8-a661-82b0be507485"
+      }
+    ],
+    [
+      127,
+      {
+        "topicID": "0.0.7154499",
+        "eventType": "dispensed",
+        "timestamp": "2025-10-29T02:41:51.077Z",
+        "signerRole": "pharmacist",
+        "actorIdHash": null,
+        "dispenseCount": 1,
+        "maxDispenses": 12,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118010120817",
+          "6118000070702"
+        ],
+        "prescriptionId": "d2565ea0-c51c-4b78-a0e8-65fdf311d006"
+      }
+    ],
+    [
+      128,
+      {
+        "topicID": "0.0.7154499",
+        "eventType": "paid",
+        "timestamp": "2025-10-29T02:41:51.077Z",
+        "signerRole": "pharmacist",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 12,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118010120817",
+          "6118000070702"
+        ],
+        "prescriptionId": "d2565ea0-c51c-4b78-a0e8-65fdf311d006"
+      }
+    ],
+    [
+      129,
+      {
+        "topicID": "0.0.7154499",
+        "eventType": "verified",
+        "timestamp": "2025-10-29T02:41:51.077Z",
+        "signerRole": "pharmacist",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 12,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118010120817",
+          "6118000070702"
+        ],
+        "prescriptionId": "d2565ea0-c51c-4b78-a0e8-65fdf311d006"
+      }
+    ],
+    [
+      130,
+      {
+        "topicID": "0.0.7154499",
+        "eventType": "issued",
+        "timestamp": "2025-10-29T02:41:51.077Z",
+        "signerRole": "doctor",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 12,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118010120817",
+          "6118000070702"
+        ],
+        "prescriptionId": "d2565ea0-c51c-4b78-a0e8-65fdf311d006"
+      }
+    ],
+    [
+      131,
+      {
+        "topicID": "0.0.7154037",
+        "eventType": "dispensed",
+        "timestamp": "2025-10-28T23:55:59.584Z",
+        "signerRole": "pharmacist",
+        "actorIdHash": null,
+        "dispenseCount": 1,
+        "maxDispenses": 12,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118010120817",
+          "ENALAPRIL10"
+        ],
+        "prescriptionId": "119dc79b-4f80-45db-a561-d826f00f6175"
+      }
+    ],
+    [
+      132,
+      {
+        "topicID": "0.0.7154037",
+        "eventType": "paid",
+        "timestamp": "2025-10-28T23:55:59.584Z",
+        "signerRole": "pharmacist",
+        "actorIdHash": null,
+        "dispenseCount": 0,
+        "maxDispenses": 12,
+        "fraudAlert": null,
+        "drugIds": [
+          "6118010120817",
+          "ENALAPRIL10"
+        ],
+        "prescriptionId": "119dc79b-4f80-45db-a561-d826f00f6175"
       }
     ],
     [
       133,
       {
-        "topicID": "0.0.7154564",
-        "eventType": "paid",
-        "timestamp": "2025-10-29T03:14:58.524Z",
+        "topicID": "0.0.7154037",
+        "eventType": "verified",
+        "timestamp": "2025-10-28T23:55:59.584Z",
         "signerRole": "pharmacist",
         "actorIdHash": null,
         "dispenseCount": 0,
@@ -2492,175 +2403,13 @@
         "fraudAlert": null,
         "drugIds": [
           "6118010120817",
-          "6118000070702"
+          "ENALAPRIL10"
         ],
-        "prescriptionId": "f0a03cb1-01c8-4cb8-a661-82b0be507485"
+        "prescriptionId": "119dc79b-4f80-45db-a561-d826f00f6175"
       }
     ],
     [
       134,
-      {
-        "topicID": "0.0.7154564",
-        "eventType": "verified",
-        "timestamp": "2025-10-29T03:14:58.524Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": null,
-        "dispenseCount": 0,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "f0a03cb1-01c8-4cb8-a661-82b0be507485"
-      }
-    ],
-    [
-      135,
-      {
-        "topicID": "0.0.7154564",
-        "eventType": "issued",
-        "timestamp": "2025-10-29T03:14:58.524Z",
-        "signerRole": "doctor",
-        "actorIdHash": null,
-        "dispenseCount": 0,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "f0a03cb1-01c8-4cb8-a661-82b0be507485"
-      }
-    ],
-    [
-      136,
-      {
-        "topicID": "0.0.7154499",
-        "eventType": "dispensed",
-        "timestamp": "2025-10-29T02:41:51.077Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": null,
-        "dispenseCount": 1,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "d2565ea0-c51c-4b78-a0e8-65fdf311d006"
-      }
-    ],
-    [
-      137,
-      {
-        "topicID": "0.0.7154499",
-        "eventType": "paid",
-        "timestamp": "2025-10-29T02:41:51.077Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": null,
-        "dispenseCount": 0,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "d2565ea0-c51c-4b78-a0e8-65fdf311d006"
-      }
-    ],
-    [
-      138,
-      {
-        "topicID": "0.0.7154499",
-        "eventType": "verified",
-        "timestamp": "2025-10-29T02:41:51.077Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": null,
-        "dispenseCount": 0,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "d2565ea0-c51c-4b78-a0e8-65fdf311d006"
-      }
-    ],
-    [
-      139,
-      {
-        "topicID": "0.0.7154499",
-        "eventType": "issued",
-        "timestamp": "2025-10-29T02:41:51.077Z",
-        "signerRole": "doctor",
-        "actorIdHash": null,
-        "dispenseCount": 0,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "6118000070702"
-        ],
-        "prescriptionId": "d2565ea0-c51c-4b78-a0e8-65fdf311d006"
-      }
-    ],
-    [
-      140,
-      {
-        "topicID": "0.0.7154037",
-        "eventType": "dispensed",
-        "timestamp": "2025-10-28T23:55:59.584Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": null,
-        "dispenseCount": 1,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "ENALAPRIL10"
-        ],
-        "prescriptionId": "119dc79b-4f80-45db-a561-d826f00f6175"
-      }
-    ],
-    [
-      141,
-      {
-        "topicID": "0.0.7154037",
-        "eventType": "paid",
-        "timestamp": "2025-10-28T23:55:59.584Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": null,
-        "dispenseCount": 0,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "ENALAPRIL10"
-        ],
-        "prescriptionId": "119dc79b-4f80-45db-a561-d826f00f6175"
-      }
-    ],
-    [
-      142,
-      {
-        "topicID": "0.0.7154037",
-        "eventType": "verified",
-        "timestamp": "2025-10-28T23:55:59.584Z",
-        "signerRole": "pharmacist",
-        "actorIdHash": null,
-        "dispenseCount": 0,
-        "maxDispenses": 12,
-        "fraudAlert": null,
-        "drugIds": [
-          "6118010120817",
-          "ENALAPRIL10"
-        ],
-        "prescriptionId": "119dc79b-4f80-45db-a561-d826f00f6175"
-      }
-    ],
-    [
-      143,
       {
         "topicID": "0.0.7154037",
         "eventType": "issued",
@@ -2678,5 +2427,5 @@
       }
     ]
   ],
-  "timestamp": "2025-10-31T06:15:04.940Z"
+  "timestamp": "2025-10-31T12:00:36.576Z"
 }
