@@ -1678,7 +1678,21 @@ app.get('/api/prescriptions/:id/pdf', authenticateJWT, async (req, res) => {
     }
 
     // Reconstruct QR payload with topicID
-    const topicID = prescriptionToTopic.get(id);
+    let topicID = prescriptionToTopic.get(id);
+
+    // Fallback: Search in topicIndex if not found in direct map
+    if (!topicID) {
+      console.warn(`[PDF DOWNLOAD] topicID not found in map for ${id}, searching topicIndex...`);
+      for (const [tid, pres] of topicIndex.entries()) {
+        if (pres.id === id || pres.prescriptionId === id) {
+          topicID = tid;
+          // Repair the map
+          prescriptionToTopic.set(id, tid);
+          break;
+        }
+      }
+    }
+
     let qrPayload = { prescriptionId: id };
 
     if (topicID) {
