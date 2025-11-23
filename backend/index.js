@@ -33,8 +33,8 @@ const PORT = process.env.PORT || 3001;
 const allowedOrigins = [
   'http://localhost:3000',
   'https://localhost:3000',
-  'https://atlascaree.vercel.app',
-  'https://www.atlascaree.vercel.app',
+  'https://atlascaretech.vercel.app',
+  'https://www.atlascaretech.vercel.app',
   process.env.FRONTEND_URL
 ].filter(Boolean);
 
@@ -42,7 +42,7 @@ app.use(cors({
   origin: (origin, callback) => {
     // Allow requests with no origin (like mobile apps, curl, Postman)
     if (!origin) return callback(null, true);
-    
+
     if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
@@ -67,10 +67,10 @@ function generatePrescriptionId() {
   const month = String(now.getMonth() + 1).padStart(2, '0');
   const day = String(now.getDate()).padStart(2, '0');
   const dateStr = `${year}${month}${day}`;
-  
+
   // Use milliseconds last 3 digits for uniqueness
   const sequence = String(now.getMilliseconds()).padStart(3, '0');
-  
+
   return `RX-${dateStr}-${sequence}`;
 }
 
@@ -80,10 +80,10 @@ function generateInvoiceId() {
   const month = String(now.getMonth() + 1).padStart(2, '0');
   const day = String(now.getDate()).padStart(2, '0');
   const dateStr = `${year}${month}${day}`;
-  
+
   // Use milliseconds last 3 digits for uniqueness
   const sequence = String(now.getMilliseconds()).padStart(3, '0');
-  
+
   return `INV-${dateStr}-${sequence}`;
 }
 
@@ -216,7 +216,7 @@ function loadMedicinesCache() {
 app.post('/api/login', (req, res) => {
   const { username, password } = req.body;
   const user = users.find(u => u.username === username && u.password === password);
-  
+
   if (user) {
     const token = signToken({ sub: user.id, username: user.username, role: user.role, fullName: user.fullName, specialty: user.specialty });
     res.json({ success: true, role: user.role, token, fullName: user.fullName, specialty: user.specialty });
@@ -230,7 +230,7 @@ app.post('/api/prescriptions', async (req, res) => {
   try {
     const prescriptionData = req.body;
     const prescriptionId = generatePrescriptionId();
-    
+
     // Build FHIR-compliant prescription
     const fhirPrescription = buildFHIRPrescription({
       ...prescriptionData,
@@ -238,22 +238,22 @@ app.post('/api/prescriptions', async (req, res) => {
       doctor: 'Dr. Smith', // In a real app, this would come from auth
       date: new Date().toISOString()
     });
-    
+
     // Store on Hedera
     const transactionId = await storePrescription(fhirPrescription);
-    
+
     // Send email (non-blocking - don't fail if email fails)
     try {
-    await sendEmail({
-      to: prescriptionData.patientEmail,
-      subject: 'Your Prescription is Ready',
-      text: `Your prescription ID is: ${prescriptionId}`,
-      prescriptionId
-    });
+      await sendEmail({
+        to: prescriptionData.patientEmail,
+        subject: 'Your Prescription is Ready',
+        text: `Your prescription ID is: ${prescriptionId}`,
+        prescriptionId
+      });
     } catch (emailError) {
       console.warn('Email sending failed (non-blocking):', emailError.message);
     }
-    
+
     res.json({
       success: true,
       prescriptionId,
@@ -280,11 +280,11 @@ app.get('/api/prescriptions/:id', async (req, res) => {
         prescription = null;
       }
     }
-    
+
     if (!prescription) {
       return res.status(404).json({ success: false, message: 'Prescription not found' });
     }
-    
+
     res.json({ success: true, prescription });
   } catch (error) {
     console.error('Error fetching prescription:', error);
@@ -297,10 +297,10 @@ app.get('/api/prescriptions/topic/:topicID', async (req, res) => {
   try {
     const { topicID } = req.params;
     console.log(`[LOOKUP] Fetching prescription for topic: ${topicID}`);
-    
+
     const p = topicIndex.get(topicID);
     if (!p) return res.status(404).json({ success: false, message: 'Not found' });
-    
+
     // ALWAYS get fresh status from Hedera and update in-memory store
     try {
       const { getTopicStatusFromHedera } = require('./utils/mirror');
@@ -311,14 +311,14 @@ app.get('/api/prescriptions/topic/:topicID', async (req, res) => {
     } catch (e) {
       console.error(`[LOOKUP] Error updating status for topic ${topicID}:`, e.message);
     }
-    
+
     // Get updated dispense count, last dispense date, and status from inMemoryStore
     const prescriptionData = inMemoryStore.get(topicID);
     const updatedDispenseCount = prescriptionData?.payload?.dispenseCount || p.dispenseCount || 0;
     const updatedMaxDispenses = prescriptionData?.payload?.maxDispenses || p.maxDispenses || 1;
     const lastDispenseDate = prescriptionData?.payload?.lastDispenseDate || p.lastDispenseDate || null;
     const currentStatus = prescriptionData?.status || 'issued';
-    
+
     // Merge updated dispense data, last dispense date, and status into prescription
     const prescriptionWithDispenseCount = {
       ...p,
@@ -327,9 +327,9 @@ app.get('/api/prescriptions/topic/:topicID', async (req, res) => {
       lastDispenseDate: lastDispenseDate,
       status: currentStatus
     };
-    
+
     console.log(`[LOOKUP] Returning prescription with dispenseCount: ${updatedDispenseCount}/${updatedMaxDispenses}, status: ${currentStatus}${lastDispenseDate ? `, last dispensed: ${lastDispenseDate}` : ''}`);
-    
+
     return res.json({ success: true, prescription: prescriptionWithDispenseCount });
   } catch (e) {
     console.error(`[LOOKUP] Error fetching prescription for topic ${req.params.topicID}:`, e.message);
@@ -342,17 +342,17 @@ app.get('/api/status/topic/:topicID', async (req, res) => {
   try {
     const { topicID } = req.params;
     console.log(`[API] Checking status for topic: ${topicID}`);
-    
+
     // ALWAYS get fresh status from Hedera - no caching, no fallbacks
     const { getTopicStatusFromHedera } = require('./utils/mirror');
     const hederaStatus = await getTopicStatusFromHedera(topicID);
-    
+
     // Update in-memory store for consistency
     try {
       const { setTopicStatus } = require('./services/store');
       setTopicStatus(topicID, hederaStatus);
-    } catch (_) {}
-    
+    } catch (_) { }
+
     console.log(`[API] Topic ${topicID} final status: ${hederaStatus}`);
     return res.json({ success: true, topicID, status: hederaStatus });
   } catch (e) {
@@ -366,13 +366,13 @@ app.get('/api/debug/status/:topicID', async (req, res) => {
   try {
     const { topicID } = req.params;
     console.log(`[DEBUG] Testing Hedera status for topic: ${topicID}`);
-    
+
     const { getTopicStatusFromHedera } = require('./utils/mirror');
     const status = await getTopicStatusFromHedera(topicID);
-    
-    return res.json({ 
-      success: true, 
-      topicID, 
+
+    return res.json({
+      success: true,
+      topicID,
       status,
       timestamp: new Date().toISOString(),
       message: `Topic ${topicID} status: ${status}`
@@ -391,42 +391,42 @@ app.post('/api/payments', async (req, res) => {
       const topicID = prescriptionToTopic.get(prescriptionId);
       if (topicID) {
         console.log(`[PAYMENT] Checking status for topic: ${topicID}`);
-        
+
         // ALWAYS get fresh status from Hedera
         const { getTopicStatusFromHedera } = require('./utils/mirror');
         const currentStatus = await getTopicStatusFromHedera(topicID);
-        
+
         console.log(`[PAYMENT] Topic ${topicID} status: ${currentStatus}`);
-        
+
         // Get dispense tracking from inMemoryStore
         const prescriptionData = inMemoryStore.get(topicID);
         const dispenseCount = prescriptionData?.payload?.dispenseCount || 0;
         const maxDispenses = prescriptionData?.payload?.maxDispenses || 1;
-        
+
         console.log(`[PAYMENT] Dispense tracking: ${dispenseCount}/${maxDispenses}`);
-        
+
         // Block if fully dispensed
         if (dispenseCount >= maxDispenses) {
           console.log(`[PAYMENT] BLOCKING payment - fully dispensed (${dispenseCount}/${maxDispenses})`);
-          return res.status(409).json({ 
-            success: false, 
+          return res.status(409).json({
+            success: false,
             error: `Prescription fully dispensed (${dispenseCount}/${maxDispenses})`,
             status: currentStatus,
             dispenseCount,
             maxDispenses
           });
         }
-        
+
         // Allow if status is 'issued', 'dispensed', OR 'paid' (for multi-dispense refills)
         if (currentStatus !== 'issued' && currentStatus !== 'dispensed' && currentStatus !== 'paid') {
           console.log(`[PAYMENT] BLOCKING payment - invalid status: ${currentStatus}`);
-          return res.status(409).json({ 
-            success: false, 
+          return res.status(409).json({
+            success: false,
             error: `Prescription status: ${currentStatus}`,
             status: currentStatus
           });
         }
-        
+
         console.log(`[PAYMENT] ✅ Allowing payment - ${maxDispenses - dispenseCount} dispenses remaining`);
       }
     }
@@ -449,7 +449,7 @@ app.post('/api/payments', async (req, res) => {
           const topicID = prescriptionToTopic.get(prescriptionId);
           const pharmacistNationalId = req.body.pharmacistNationalId;
           if (topicID && pharmacistNationalId) {
-          const { lastEventHashPerTopic, lastEventTypePerTopic } = require('./services/store');
+            const { lastEventHashPerTopic, lastEventTypePerTopic } = require('./services/store');
             const prevEventHash = lastEventHashPerTopic.get(topicID) || undefined;
             const base = {
               version: '1',
@@ -471,11 +471,11 @@ app.post('/api/payments', async (req, res) => {
             const signed = { ...toHash, contentHash };
             const signature = signPayload(signed, pharmacistNationalId);
             const msg = { ...signed, signature: `hex:${signature}` };
-            
+
             // Compress payload for HCS (CNDP compliance + cost reduction)
             const compressedMsg = compressPayload(msg, hashLookup);
             console.log(`📊 PAID message compression: ${JSON.stringify(msg).length} → ${JSON.stringify(compressedMsg).length} bytes`);
-            
+
             const { submitPrescriptionMessage } = require('./hedera');
             await submitPrescriptionMessage(topicID, compressedMsg);
             try {
@@ -486,7 +486,7 @@ app.post('/api/payments', async (req, res) => {
               const { setTopicStatus, logHCSEvent } = require('./services/store');
               setTopicStatus(topicID, 'paid');
               console.log(`[PAYMENT] Updated topic ${topicID} status to: paid`);
-              
+
               // Log HCS event for admin dashboard
               const prescriptionData = inMemoryStore.get(topicID);
               logHCSEvent({
@@ -503,9 +503,9 @@ app.post('/api/payments', async (req, res) => {
                 amountMAD: req.body.amountMAD,
                 method: req.body.method
               });
-            } catch (_) {}
+            } catch (_) { }
           }
-        } catch (_) {}
+        } catch (_) { }
       }
       res.json(payload);
     }, 800);
@@ -519,13 +519,13 @@ app.post('/api/payments', async (req, res) => {
 app.post('/api/payments/batch', async (req, res) => {
   try {
     const { prescriptionIds, method, totalAmountMAD, pharmacistNationalId } = req.body;
-    
+
     if (!Array.isArray(prescriptionIds) || prescriptionIds.length === 0) {
       return res.status(400).json({ success: false, error: 'prescriptionIds array is required' });
     }
-    
+
     console.log(`[BATCH PAYMENT] Processing ${prescriptionIds.length} prescriptions`);
-    
+
     // Validate all prescriptions are eligible
     const eligibilityChecks = [];
     for (const prescriptionId of prescriptionIds) {
@@ -533,11 +533,11 @@ app.post('/api/payments/batch', async (req, res) => {
       if (topicID) {
         const { getTopicStatusFromHedera } = require('./utils/mirror');
         const currentStatus = await getTopicStatusFromHedera(topicID);
-        
+
         const prescriptionData = inMemoryStore.get(topicID);
         const dispenseCount = prescriptionData?.payload?.dispenseCount || 0;
         const maxDispenses = prescriptionData?.payload?.maxDispenses || 1;
-        
+
         if (dispenseCount >= maxDispenses) {
           eligibilityChecks.push({ prescriptionId, eligible: false, reason: 'Fully dispensed' });
         } else if (currentStatus !== 'issued' && currentStatus !== 'dispensed') {
@@ -549,7 +549,7 @@ app.post('/api/payments/batch', async (req, res) => {
         eligibilityChecks.push({ prescriptionId, eligible: false, reason: 'Not found' });
       }
     }
-    
+
     // Check if any are ineligible
     const ineligible = eligibilityChecks.filter(check => !check.eligible);
     if (ineligible.length > 0) {
@@ -559,7 +559,7 @@ app.post('/api/payments/batch', async (req, res) => {
         ineligible
       });
     }
-    
+
     // Process batch payment (simulate)
     setTimeout(async () => {
       // Submit 'paid' event for each prescription
@@ -581,22 +581,22 @@ app.post('/api/payments/batch', async (req, res) => {
               prevEventHash: prevEventHash,
               prevEventType: lastEventTypePerTopic.get(topicID) || undefined
             };
-            
+
             const privateKey = await ensureKeyPair();
             const signature = await signPayload(base, privateKey);
             const msg = {
               ...base,
               sig: signature
             };
-            
+
             const compressedMsg = compressPayload(msg);
             const { submitPrescriptionMessage } = require('./hedera');
             await submitPrescriptionMessage(topicID, compressedMsg);
-            
+
             const newHash = 'sha256:' + crypto.createHash('sha256').update(Buffer.from(JSON.stringify(msg))).digest('hex');
             lastEventHashPerTopic.set(topicID, newHash);
             lastEventTypePerTopic.set(topicID, 'paid');
-            
+
             const { setTopicStatus } = require('./services/store');
             setTopicStatus(topicID, 'paid');
             console.log(`[BATCH PAYMENT] Updated topic ${topicID} status to: paid`);
@@ -605,7 +605,7 @@ app.post('/api/payments/batch', async (req, res) => {
           console.error(`[BATCH PAYMENT] Failed to submit paid event for ${prescriptionId}:`, err);
         }
       }
-      
+
       res.json({
         success: true,
         batchTransactionId: `batch-tx-${Date.now()}`,
@@ -615,7 +615,7 @@ app.post('/api/payments/batch', async (req, res) => {
         status: 'completed'
       });
     }, 1000); // Slightly longer delay for batch processing
-    
+
   } catch (error) {
     console.error('[BATCH PAYMENT] Error:', error);
     res.status(500).json({ success: false, error: error.message });
@@ -672,247 +672,247 @@ app.post(
     })
   }),
   async (req, res) => {
-  try {
-    const { formData = {}, geo = null, nationalId } = req.body || {};
-    const doctorId = req.user?.username || 'doctor@example.com';
-    let prescriptionId, nft, stored, patientHash, doctorHash, drugHashes;
-
-    if (isQueueEnabled() && enqueueIssue) {
-      // Queue-based processing with retries
-      const job = await enqueueIssue(formData, geo);
-      const result = await waitForJob(job);
-      ({ prescriptionId, nft, stored, patientHash, doctorHash, drugHashes } = result);
-    } else {
-      // Fallback to synchronous orchestrator
-      ({ prescriptionId, nft, stored, patientHash, doctorHash, drugHashes } = await orchestrator.issuePrescription({ formData, geo, doctorId }));
-    }
-
-    // Build simplified QR payload with only required elements
-    // Create a dedicated Hedera topic per prescription
-    let topicID;
     try {
-      const { createPrescriptionTopic } = require('./hedera');
-      topicID = await createPrescriptionTopic({ memo: `rx:${prescriptionId}` });
-      console.log('✅ Hedera topic created successfully:', topicID);
-    } catch (e) {
-      console.error('❌ Topic creation failed:', e.message);
-      console.error('Stack trace:', e.stack);
-      topicID = `0.0.${Date.now() % 100000}`;
-      console.warn('⚠️  Using mock topic ID:', topicID);
-    }
-    const hashedPatientId = hashIdentifier(formData?.patientId || formData?.patientEmail || 'patient', process.env.CNDP_SALT || 'atlascare-default-salt', prescriptionId);
-    
-    // Create full QR payload per spec Section 3.1 (12 fields)
-    const meds = Array.isArray(formData?.medications) ? formData.medications : [];
-    const firstMed = meds[0] || {};
-    const nowIso = new Date().toISOString();
-    const validUntil = new Date(Date.now() + 60*24*60*60*1000).toISOString(); // 60 days for long-term prescriptions
-    const nonce = crypto.randomBytes(8).toString('hex');
-    const geotag = geo ? `MA-${geo.lat.toFixed(2)},${geo.lng.toFixed(2)}` : 'MA-CAS';
-    const doctorIdHash = nationalId ? hashIdentifier(nationalId, process.env.CNDP_SALT || 'atlascare-default-salt', prescriptionId) : null;
-    
-    const qrPayload = {
-      v: "1.0",                    // version
-      t: topicID,                  // topicId
-      h: hashedPatientId,          // hashedPatientId
-      d: firstMed.code || 'UNKNOWN', // drugId ATC
-      q: `${firstMed.dosage || '1'}${firstMed.unit || 'mg'}`, // quantity
-      i: firstMed.instructions || `${firstMed.frequency || '1'}x/day, ${firstMed.duration || '7'} ${firstMed.durationUnit || 'days'}`, // instructions
-      u: validUntil,               // validUntil
-      n: nonce,                    // nonce
-      g: geotag,                   // geotag
-      p: doctorIdHash,             // doctorId hash
-      dc: 0,                       // dispenseCount (starts at 0)
-      md: formData?.maxDispenses || 1, // maxDispenses
-    };
-    
-    // Add ECDSA signature if doctor national ID is provided
-    if (nationalId) {
-      const signature = signPayload(qrPayload, nationalId);
-      qrPayload.s = `hex:${signature}`;
-    }
-    
-    // Keep the full payload for backend processing (HCS, etc.)
-    const drugIds = meds.map(m => m?.code || 'unknown');
-    const instructionsList = meds.map(m => m?.instructions || '');
-    const validFrom = nowIso;
-    const fullPayload = {
-      version: '1',
-      alg: 'secp256k1+SHA-256',
-      eventType: 'issued',
-      topicID,
-      timestamp: nowIso,
-      validFrom,
-      validUntil,
-      geoTag: geo ? `${geo.lat},${geo.lng}` : null,
-      hashedPatientId,
-      nftSerial: String(nft?.serial || 1),
-      drugIds,
-      instructionsList,
-      signerRole: 'doctor',
-      maxDispenses: formData?.maxDispenses || 1,
-      dispenseCount: 0
-    };
-    const toHash = { ...fullPayload, nonce };
-    const contentHash = 'sha256:' + crypto.createHash('sha256').update(Buffer.from(JSON.stringify(toHash))).digest('hex');
-    const completePayload = { ...toHash, contentHash };
-    if (nationalId) {
-      const { publicKeyHex } = ensureKeyPair(nationalId);
-      const keyId = 'fp:' + crypto.createHash('sha256').update(Buffer.from(publicKeyHex, 'hex')).digest('hex').slice(0, 16);
-      completePayload.keyId = keyId;
-      const fullSignature = signPayload(completePayload, nationalId);
-      completePayload.signature = `hex:${fullSignature}`;
-    }
+      const { formData = {}, geo = null, nationalId } = req.body || {};
+      const doctorId = req.user?.username || 'doctor@example.com';
+      let prescriptionId, nft, stored, patientHash, doctorHash, drugHashes;
 
-    // OTP issuance (for pharmacist verification)
-    const ttl = Number(process.env.OTP_TTL_SECONDS || 300);
-    const { token, otp, expiresAt } = issueOtp(prescriptionId, ttl);
-
-    // Queue email with PDF (with retry logic and SMS fallback)
-    if (formData.patientEmail) {
-      try {
-        const pdfBuffer = await generatePrescriptionPdf({ ...formData, id: prescriptionId, date: new Date().toISOString(), doctor: req.user?.username || 'Doctor' }, { qrData: qrPayload });
-        
-        // Use notification queue for reliable delivery
-        const { queueEmail } = require('./services/notificationQueue');
-        const notificationId = queueEmail({
-          to: formData.patientEmail,
-          subject: 'Your AtlasCare Prescription',
-          text: `Dear ${formData.patientName},\n\nYour prescription has been created successfully.\nUse the QR code in the attached PDF at the pharmacy.\nFor verification, your verification code is: ${topicID}`,
-          html: `<p>Dear ${formData.patientName},</p><p>Your prescription has been created successfully.</p><p>Use the QR code in the attached PDF at the pharmacy.</p><p>Verification code: <strong>${topicID}</strong></p>`,
-          attachments: [
-            { filename: `Prescription_${prescriptionId}.pdf`, content: pdfBuffer, contentType: 'application/pdf' }
-          ],
-          prescriptionId
-        });
-        
-        console.log(`✅ Email queued for ${formData.patientEmail} (${notificationId})`);
-      } catch (e) {
-        console.error('Failed to queue email notification:', e.message);
-        // Still continue - email is not critical for prescription creation
+      if (isQueueEnabled() && enqueueIssue) {
+        // Queue-based processing with retries
+        const job = await enqueueIssue(formData, geo);
+        const result = await waitForJob(job);
+        ({ prescriptionId, nft, stored, patientHash, doctorHash, drugHashes } = result);
+      } else {
+        // Fallback to synchronous orchestrator
+        ({ prescriptionId, nft, stored, patientHash, doctorHash, drugHashes } = await orchestrator.issuePrescription({ formData, geo, doctorId }));
       }
-    }
 
-    // ADDITIONALLY send SMS or WhatsApp notification (if selected)
-    if (formData.patientPhone && (formData.contactMethod === 'sms' || formData.contactMethod === 'whatsapp')) {
+      // Build simplified QR payload with only required elements
+      // Create a dedicated Hedera topic per prescription
+      let topicID;
       try {
-        const { sendPrescriptionNotification } = require('./utils/messaging');
-        const messagingResult = await sendPrescriptionNotification({
-          to: formData.patientPhone,
-          topicID: topicID,
-          patientName: formData.patientName,
-          method: formData.contactMethod
-        });
-        
-        if (messagingResult.success) {
-          console.log(`✅ ${formData.contactMethod.toUpperCase()} sent successfully to ${formData.patientPhone}:`, messagingResult.messageId);
-        } else {
-          console.warn(`${formData.contactMethod.toUpperCase()} delivery failed:`, messagingResult.error);
-        }
+        const { createPrescriptionTopic } = require('./hedera');
+        topicID = await createPrescriptionTopic({ memo: `rx:${prescriptionId}` });
+        console.log('✅ Hedera topic created successfully:', topicID);
       } catch (e) {
-        console.warn(`${formData.contactMethod} notification failed:`, e.message);
+        console.error('❌ Topic creation failed:', e.message);
+        console.error('Stack trace:', e.stack);
+        topicID = `0.0.${Date.now() % 100000}`;
+        console.warn('⚠️  Using mock topic ID:', topicID);
       }
-    }
+      const hashedPatientId = hashIdentifier(formData?.patientId || formData?.patientEmail || 'patient', process.env.CNDP_SALT || 'atlascare-default-salt', prescriptionId);
 
-    // Index the full prescription payload in memory for quick lookup (demo)
-    try {
-      const full = { 
-        ...formData, 
-        id: prescriptionId, 
-        nft, 
-        doctor: req.user?.fullName || 'Mohamed Rami', 
-        doctorSpecialty: req.user?.specialty || 'Specialist in Internal Medicine',
-        doctorNationalId: nationalId || '009811233',
-        date: new Date().toISOString(),
-        dispenseCount: 0,
-        maxDispenses: formData?.maxDispenses || 1
+      // Create full QR payload per spec Section 3.1 (12 fields)
+      const meds = Array.isArray(formData?.medications) ? formData.medications : [];
+      const firstMed = meds[0] || {};
+      const nowIso = new Date().toISOString();
+      const validUntil = new Date(Date.now() + 60 * 24 * 60 * 60 * 1000).toISOString(); // 60 days for long-term prescriptions
+      const nonce = crypto.randomBytes(8).toString('hex');
+      const geotag = geo ? `MA-${geo.lat.toFixed(2)},${geo.lng.toFixed(2)}` : 'MA-CAS';
+      const doctorIdHash = nationalId ? hashIdentifier(nationalId, process.env.CNDP_SALT || 'atlascare-default-salt', prescriptionId) : null;
+
+      const qrPayload = {
+        v: "1.0",                    // version
+        t: topicID,                  // topicId
+        h: hashedPatientId,          // hashedPatientId
+        d: firstMed.code || 'UNKNOWN', // drugId ATC
+        q: `${firstMed.dosage || '1'}${firstMed.unit || 'mg'}`, // quantity
+        i: firstMed.instructions || `${firstMed.frequency || '1'}x/day, ${firstMed.duration || '7'} ${firstMed.durationUnit || 'days'}`, // instructions
+        u: validUntil,               // validUntil
+        n: nonce,                    // nonce
+        g: geotag,                   // geotag
+        p: doctorIdHash,             // doctorId hash
+        dc: 0,                       // dispenseCount (starts at 0)
+        md: formData?.maxDispenses || 1, // maxDispenses
       };
-      prescriptionIndex.set(prescriptionId, full);
-      putPayload(completePayload.topicID, completePayload);
-      topicIndex.set(completePayload.topicID, full);
-      prescriptionToTopic.set(prescriptionId, completePayload.topicID);
-      
-      // Store in inMemoryStore with dispense tracking
-      inMemoryStore.set(completePayload.topicID, {
-        prescription: full,
-        payload: completePayload
-      });
-      
-      // Mark indexes as dirty for persistence
-      indexPersistence.markDirty();
-      
-      // Log HCS event for admin dashboard
-      const { logHCSEvent } = require('./services/store');
-      logHCSEvent({
-        topicID: completePayload.topicID,
-        eventType: 'issued',
-        timestamp: completePayload.timestamp,
-        signerRole: 'doctor',
-        actorIdHash: completePayload.actorIdHash,
-        dispenseCount: 0,
-        maxDispenses: formData?.maxDispenses || 1,
-        fraudAlert: null,
-        drugIds: completePayload.drugIds || [],
-        prescriptionId: prescriptionId
-      });
-      
-      console.log(`✅ Indexed prescription: ${prescriptionId} → Topic: ${completePayload.topicID}`);
-      console.log(`   topicIndex size: ${topicIndex.size}, prescriptionIndex size: ${prescriptionIndex.size}`);
-      console.log(`   Dispense tracking: ${full.dispenseCount}/${full.maxDispenses}`);
-      
-      // Store sensitive data separately (CNDP compliance - removed from HCS)
-      putSensitiveData(completePayload.topicID, {
-        drugIds: completePayload.drugIds,
-        instructionsList: completePayload.instructionsList,
-        nftSerial: completePayload.nftSerial,
-        preciseGeoTag: geo ? `${geo.lat},${geo.lng}` : null,
-        medications: formData.medications // Full medication details
-      });
-      
-      // Compress payload for HCS submission (72% size reduction)
-      const compressedPayload = compressPayload(completePayload, hashLookup);
-      console.log(`📊 Payload compression: ${JSON.stringify(completePayload).length} → ${JSON.stringify(compressedPayload).length} bytes`);
-      
-      // queue issued event and submit compressed payload to HCS (topicID passed separately)
-      queueMessage(completePayload.topicID, { eventType: 'issued', payload: compressedPayload });
-      try { 
-        const { submitPrescriptionMessage } = require('./hedera');
-        const hcsResult = await submitPrescriptionMessage(completePayload.topicID, compressedPayload);
-        console.log('✅ HCS Message (compressed) submitted:', hcsResult.status, 'Topic:', hcsResult.topicId);
-      } catch (hcsError) {
-        console.error('❌ HCS submission failed:', hcsError.message);
+
+      // Add ECDSA signature if doctor national ID is provided
+      if (nationalId) {
+        const signature = signPayload(qrPayload, nationalId);
+        qrPayload.s = `hex:${signature}`;
       }
+
+      // Keep the full payload for backend processing (HCS, etc.)
+      const drugIds = meds.map(m => m?.code || 'unknown');
+      const instructionsList = meds.map(m => m?.instructions || '');
+      const validFrom = nowIso;
+      const fullPayload = {
+        version: '1',
+        alg: 'secp256k1+SHA-256',
+        eventType: 'issued',
+        topicID,
+        timestamp: nowIso,
+        validFrom,
+        validUntil,
+        geoTag: geo ? `${geo.lat},${geo.lng}` : null,
+        hashedPatientId,
+        nftSerial: String(nft?.serial || 1),
+        drugIds,
+        instructionsList,
+        signerRole: 'doctor',
+        maxDispenses: formData?.maxDispenses || 1,
+        dispenseCount: 0
+      };
+      const toHash = { ...fullPayload, nonce };
+      const contentHash = 'sha256:' + crypto.createHash('sha256').update(Buffer.from(JSON.stringify(toHash))).digest('hex');
+      const completePayload = { ...toHash, contentHash };
+      if (nationalId) {
+        const { publicKeyHex } = ensureKeyPair(nationalId);
+        const keyId = 'fp:' + crypto.createHash('sha256').update(Buffer.from(publicKeyHex, 'hex')).digest('hex').slice(0, 16);
+        completePayload.keyId = keyId;
+        const fullSignature = signPayload(completePayload, nationalId);
+        completePayload.signature = `hex:${fullSignature}`;
+      }
+
+      // OTP issuance (for pharmacist verification)
+      const ttl = Number(process.env.OTP_TTL_SECONDS || 300);
+      const { token, otp, expiresAt } = issueOtp(prescriptionId, ttl);
+
+      // Queue email with PDF (with retry logic and SMS fallback)
+      if (formData.patientEmail) {
+        try {
+          const pdfBuffer = await generatePrescriptionPdf({ ...formData, id: prescriptionId, date: new Date().toISOString(), doctor: req.user?.username || 'Doctor' }, { qrData: qrPayload });
+
+          // Use notification queue for reliable delivery
+          const { queueEmail } = require('./services/notificationQueue');
+          const notificationId = queueEmail({
+            to: formData.patientEmail,
+            subject: 'Your AtlasCare Prescription',
+            text: `Dear ${formData.patientName},\n\nYour prescription has been created successfully.\nUse the QR code in the attached PDF at the pharmacy.\nFor verification, your verification code is: ${topicID}`,
+            html: `<p>Dear ${formData.patientName},</p><p>Your prescription has been created successfully.</p><p>Use the QR code in the attached PDF at the pharmacy.</p><p>Verification code: <strong>${topicID}</strong></p>`,
+            attachments: [
+              { filename: `Prescription_${prescriptionId}.pdf`, content: pdfBuffer, contentType: 'application/pdf' }
+            ],
+            prescriptionId
+          });
+
+          console.log(`✅ Email queued for ${formData.patientEmail} (${notificationId})`);
+        } catch (e) {
+          console.error('Failed to queue email notification:', e.message);
+          // Still continue - email is not critical for prescription creation
+        }
+      }
+
+      // ADDITIONALLY send SMS or WhatsApp notification (if selected)
+      if (formData.patientPhone && (formData.contactMethod === 'sms' || formData.contactMethod === 'whatsapp')) {
+        try {
+          const { sendPrescriptionNotification } = require('./utils/messaging');
+          const messagingResult = await sendPrescriptionNotification({
+            to: formData.patientPhone,
+            topicID: topicID,
+            patientName: formData.patientName,
+            method: formData.contactMethod
+          });
+
+          if (messagingResult.success) {
+            console.log(`✅ ${formData.contactMethod.toUpperCase()} sent successfully to ${formData.patientPhone}:`, messagingResult.messageId);
+          } else {
+            console.warn(`${formData.contactMethod.toUpperCase()} delivery failed:`, messagingResult.error);
+          }
+        } catch (e) {
+          console.warn(`${formData.contactMethod} notification failed:`, e.message);
+        }
+      }
+
+      // Index the full prescription payload in memory for quick lookup (demo)
       try {
-        const { lastEventHashPerTopic, lastEventTypePerTopic } = require('./services/store');
-        const issuedHash = 'sha256:' + crypto.createHash('sha256').update(Buffer.from(JSON.stringify(completePayload))).digest('hex');
-        lastEventHashPerTopic.set(completePayload.topicID, issuedHash);
-        lastEventTypePerTopic.set(completePayload.topicID, 'issued');
-      } catch (_) {}
-    } catch (_) {}
+        const full = {
+          ...formData,
+          id: prescriptionId,
+          nft,
+          doctor: req.user?.fullName || 'Mohamed Rami',
+          doctorSpecialty: req.user?.specialty || 'Specialist in Internal Medicine',
+          doctorNationalId: nationalId || '009811233',
+          date: new Date().toISOString(),
+          dispenseCount: 0,
+          maxDispenses: formData?.maxDispenses || 1
+        };
+        prescriptionIndex.set(prescriptionId, full);
+        putPayload(completePayload.topicID, completePayload);
+        topicIndex.set(completePayload.topicID, full);
+        prescriptionToTopic.set(prescriptionId, completePayload.topicID);
 
-    // Include doctor's public key for offline verification caching
-    let doctorPublicKey = null;
-    if (nationalId) {
-      const { publicKeyHex } = ensureKeyPair(nationalId);
-      doctorPublicKey = publicKeyHex;
+        // Store in inMemoryStore with dispense tracking
+        inMemoryStore.set(completePayload.topicID, {
+          prescription: full,
+          payload: completePayload
+        });
+
+        // Mark indexes as dirty for persistence
+        indexPersistence.markDirty();
+
+        // Log HCS event for admin dashboard
+        const { logHCSEvent } = require('./services/store');
+        logHCSEvent({
+          topicID: completePayload.topicID,
+          eventType: 'issued',
+          timestamp: completePayload.timestamp,
+          signerRole: 'doctor',
+          actorIdHash: completePayload.actorIdHash,
+          dispenseCount: 0,
+          maxDispenses: formData?.maxDispenses || 1,
+          fraudAlert: null,
+          drugIds: completePayload.drugIds || [],
+          prescriptionId: prescriptionId
+        });
+
+        console.log(`✅ Indexed prescription: ${prescriptionId} → Topic: ${completePayload.topicID}`);
+        console.log(`   topicIndex size: ${topicIndex.size}, prescriptionIndex size: ${prescriptionIndex.size}`);
+        console.log(`   Dispense tracking: ${full.dispenseCount}/${full.maxDispenses}`);
+
+        // Store sensitive data separately (CNDP compliance - removed from HCS)
+        putSensitiveData(completePayload.topicID, {
+          drugIds: completePayload.drugIds,
+          instructionsList: completePayload.instructionsList,
+          nftSerial: completePayload.nftSerial,
+          preciseGeoTag: geo ? `${geo.lat},${geo.lng}` : null,
+          medications: formData.medications // Full medication details
+        });
+
+        // Compress payload for HCS submission (72% size reduction)
+        const compressedPayload = compressPayload(completePayload, hashLookup);
+        console.log(`📊 Payload compression: ${JSON.stringify(completePayload).length} → ${JSON.stringify(compressedPayload).length} bytes`);
+
+        // queue issued event and submit compressed payload to HCS (topicID passed separately)
+        queueMessage(completePayload.topicID, { eventType: 'issued', payload: compressedPayload });
+        try {
+          const { submitPrescriptionMessage } = require('./hedera');
+          const hcsResult = await submitPrescriptionMessage(completePayload.topicID, compressedPayload);
+          console.log('✅ HCS Message (compressed) submitted:', hcsResult.status, 'Topic:', hcsResult.topicId);
+        } catch (hcsError) {
+          console.error('❌ HCS submission failed:', hcsError.message);
+        }
+        try {
+          const { lastEventHashPerTopic, lastEventTypePerTopic } = require('./services/store');
+          const issuedHash = 'sha256:' + crypto.createHash('sha256').update(Buffer.from(JSON.stringify(completePayload))).digest('hex');
+          lastEventHashPerTopic.set(completePayload.topicID, issuedHash);
+          lastEventTypePerTopic.set(completePayload.topicID, 'issued');
+        } catch (_) { }
+      } catch (_) { }
+
+      // Include doctor's public key for offline verification caching
+      let doctorPublicKey = null;
+      if (nationalId) {
+        const { publicKeyHex } = ensureKeyPair(nationalId);
+        doctorPublicKey = publicKeyHex;
+      }
+
+      return res.json({
+        success: true,
+        prescriptionId,
+        patientHash,
+        doctorHash,
+        drugHashes,
+        nft,
+        qr: { data: qrPayload, expiresAt },
+        storageRef: stored.fileId,
+        doctorPublicKey // For offline verification caching
+      });
+    } catch (error) {
+      console.error('Error issuing prescription:', error);
+      return res.status(500).json({ success: false, error: error.message });
     }
-
-    return res.json({
-      success: true,
-      prescriptionId,
-      patientHash,
-      doctorHash,
-      drugHashes,
-      nft,
-      qr: { data: qrPayload, expiresAt },
-      storageRef: stored.fileId,
-      doctorPublicKey // For offline verification caching
-    });
-  } catch (error) {
-    console.error('Error issuing prescription:', error);
-    return res.status(500).json({ success: false, error: error.message });
-  }
-});
+  });
 
 // Verify prescription (PRD: /api/verify)
 app.post(
@@ -927,298 +927,298 @@ app.post(
     })
   }),
   async (req, res) => {
-  try {
-    const { payload: payloadIn, topicID, doctorNationalId, pharmacistNationalId, pharmacyId } = req.body || {};
-    
-    // Normalize empty strings to undefined
-    const normalizedTopicID = topicID && topicID.trim() !== '' ? topicID : undefined;
-    const normalizedDoctorId = doctorNationalId && doctorNationalId.trim() !== '' ? doctorNationalId : undefined;
-    const normalizedPharmacistId = pharmacistNationalId && pharmacistNationalId.trim() !== '' ? pharmacistNationalId : undefined;
-    
-    console.log('[VERIFY] Request received:', {
-      hasPayload: !!payloadIn,
-      topicID: normalizedTopicID,
-      hasDoctorId: !!normalizedDoctorId,
-      hasPharmacistId: !!normalizedPharmacistId
-    });
-    let payload = payloadIn;
-    
-    // Fallback to in-memory fetch by topicID when payload not provided
-    if (!payload && normalizedTopicID) {
+    try {
+      const { payload: payloadIn, topicID, doctorNationalId, pharmacistNationalId, pharmacyId } = req.body || {};
+
+      // Normalize empty strings to undefined
+      const normalizedTopicID = topicID && topicID.trim() !== '' ? topicID : undefined;
+      const normalizedDoctorId = doctorNationalId && doctorNationalId.trim() !== '' ? doctorNationalId : undefined;
+      const normalizedPharmacistId = pharmacistNationalId && pharmacistNationalId.trim() !== '' ? pharmacistNationalId : undefined;
+
+      console.log('[VERIFY] Request received:', {
+        hasPayload: !!payloadIn,
+        topicID: normalizedTopicID,
+        hasDoctorId: !!normalizedDoctorId,
+        hasPharmacistId: !!normalizedPharmacistId
+      });
+      let payload = payloadIn;
+
+      // Fallback to in-memory fetch by topicID when payload not provided
+      if (!payload && normalizedTopicID) {
+        try {
+          const { inMemoryStore } = require('./services/store');
+          const entry = inMemoryStore.get(normalizedTopicID);
+          payload = entry?.payload || null;
+
+          // If still no payload, try to reconstruct from prescription index (defined in this file)
+          if (!payload) {
+            const prescription = prescriptionIndex.get(normalizedTopicID);
+            if (prescription) {
+              console.log('[VERIFY] Reconstructing payload from prescription index for topic:', normalizedTopicID);
+              // Create a minimal payload for verification - INCLUDE maxDispenses!
+              payload = {
+                eventType: 'issued',
+                topicID: normalizedTopicID,
+                prescriptionId: prescription.prescriptionId || prescription.id,
+                doctorNationalId: prescription.doctorNationalId || normalizedDoctorId,
+                timestamp: prescription.date || new Date().toISOString(),
+                maxDispenses: prescription.maxDispenses || 1 // ✨ CRITICAL: Include maxDispenses for verification
+              };
+            }
+          }
+        } catch (_) { payload = null; }
+      }
+      if (!payload) {
+        console.warn('[VERIFY] No payload found for topicID:', normalizedTopicID);
+        return res.status(400).json({ success: false, valid: false, message: 'Prescription not found. Please scan the QR code or look up the prescription first.' });
+      }
+
+      // Decompress payload if it's in compressed format (from HCS or in-memory store)
+      // Check for compressed format: has 'e' but not 'eventType'
+      if (payload?.e && !payload?.eventType) {
+        console.log('[VERIFY] Detected compressed payload, decompressing...');
+        payload = decompressPayload(payload, hashLookup);
+        console.log('[VERIFY] Decompressed payload:', payload.eventType || payload.e);
+      }
+
+      // Block verification if fully dispensed (check dispense count, not just status)
       try {
-        const { inMemoryStore } = require('./services/store');
-        const entry = inMemoryStore.get(normalizedTopicID);
-        payload = entry?.payload || null;
-        
-        // If still no payload, try to reconstruct from prescription index (defined in this file)
-        if (!payload) {
-          const prescription = prescriptionIndex.get(normalizedTopicID);
-          if (prescription) {
-            console.log('[VERIFY] Reconstructing payload from prescription index for topic:', normalizedTopicID);
-            // Create a minimal payload for verification - INCLUDE maxDispenses!
-            payload = {
-              eventType: 'issued',
-              topicID: normalizedTopicID,
-              prescriptionId: prescription.prescriptionId || prescription.id,
-              doctorNationalId: prescription.doctorNationalId || normalizedDoctorId,
-              timestamp: prescription.date || new Date().toISOString(),
-              maxDispenses: prescription.maxDispenses || 1 // ✨ CRITICAL: Include maxDispenses for verification
-            };
+        const { lastEventTypePerTopic, inMemoryStore } = require('./services/store');
+        const t = lastEventTypePerTopic.get(payload.topicID);
+        if (t === 'dispensed' || t === 'paid') {
+          // Check if there are remaining dispenses
+          const prescriptionData = inMemoryStore.get(payload.topicID);
+          const prescriptionRecord = prescriptionIndex.get(payload.topicID); // Direct access to prescriptionIndex (defined in this file)
+
+          // ALWAYS prioritize stored data over QR payload (QR may be outdated)
+          const currentDispenseCount = prescriptionData?.payload?.dispenseCount
+            || prescriptionRecord?.dispenseCount
+            || 0;
+
+          const maxDispenses = prescriptionData?.payload?.maxDispenses
+            || prescriptionRecord?.maxDispenses
+            || payload.md
+            || payload.maxDispenses
+            || 1;
+
+          console.log(`[VERIFY] Dispense check: ${currentDispenseCount}/${maxDispenses} (status: ${t})`);
+
+          if (currentDispenseCount >= maxDispenses) {
+            console.log(`[VERIFY] ❌ Blocking verification - fully dispensed`);
+            return res.status(409).json({
+              success: false,
+              valid: false,
+              message: `Prescription fully dispensed (${currentDispenseCount}/${maxDispenses})`
+            });
+          } else {
+            console.log(`[VERIFY] ✅ Allowing verification - ${maxDispenses - currentDispenseCount} dispenses remaining`);
           }
         }
-      } catch (_) { payload = null; }
-    }
-    if (!payload) {
-      console.warn('[VERIFY] No payload found for topicID:', normalizedTopicID);
-      return res.status(400).json({ success: false, valid: false, message: 'Prescription not found. Please scan the QR code or look up the prescription first.' });
-    }
-    
-    // Decompress payload if it's in compressed format (from HCS or in-memory store)
-    // Check for compressed format: has 'e' but not 'eventType'
-    if (payload?.e && !payload?.eventType) {
-      console.log('[VERIFY] Detected compressed payload, decompressing...');
-      payload = decompressPayload(payload, hashLookup);
-      console.log('[VERIFY] Decompressed payload:', payload.eventType || payload.e);
-    }
+      } catch (e) {
+        console.warn('[VERIFY] Dispense check failed:', e.message);
+      }
 
-    // Block verification if fully dispensed (check dispense count, not just status)
-    try {
-      const { lastEventTypePerTopic, inMemoryStore } = require('./services/store');
-      const t = lastEventTypePerTopic.get(payload.topicID);
-      if (t === 'dispensed' || t === 'paid') {
-        // Check if there are remaining dispenses
-        const prescriptionData = inMemoryStore.get(payload.topicID);
-        const prescriptionRecord = prescriptionIndex.get(payload.topicID); // Direct access to prescriptionIndex (defined in this file)
-        
-        // ALWAYS prioritize stored data over QR payload (QR may be outdated)
-        const currentDispenseCount = prescriptionData?.payload?.dispenseCount 
-          || prescriptionRecord?.dispenseCount 
-          || 0;
-        
-        const maxDispenses = prescriptionData?.payload?.maxDispenses 
-          || prescriptionRecord?.maxDispenses 
-          || payload.md 
-          || payload.maxDispenses 
-          || 1;
-        
-        console.log(`[VERIFY] Dispense check: ${currentDispenseCount}/${maxDispenses} (status: ${t})`);
-        
-        if (currentDispenseCount >= maxDispenses) {
-          console.log(`[VERIFY] ❌ Blocking verification - fully dispensed`);
-          return res.status(409).json({ 
-            success: false, 
-            valid: false, 
-            message: `Prescription fully dispensed (${currentDispenseCount}/${maxDispenses})` 
+      // QR version check (spec Section 5.1)
+      if (payload?.v && payload.v !== "1.0") {
+        return res.status(400).json({ success: false, valid: false, message: 'Unsupported QR version' });
+      }
+
+      // Expiration check (spec Section 5.1)
+      if (payload?.u) {
+        const validUntil = new Date(payload.u);
+        const now = new Date();
+
+        // Check if prescription has expired
+        if (now > validUntil) {
+          return res.status(400).json({
+            success: false,
+            valid: false,
+            message: 'Prescription expired',
+            expiredAt: validUntil.toISOString()
           });
-        } else {
-          console.log(`[VERIFY] ✅ Allowing verification - ${maxDispenses - currentDispenseCount} dispenses remaining`);
         }
       }
-    } catch (e) {
-      console.warn('[VERIFY] Dispense check failed:', e.message);
-    }
 
-    // QR version check (spec Section 5.1)
-    if (payload?.v && payload.v !== "1.0") {
-      return res.status(400).json({ success: false, valid: false, message: 'Unsupported QR version' });
-    }
+      // Dispense count validation (spec Section 5.1)
+      // Check both compressed and decompressed field names
+      const dispenseCount = payload?.dispenseCount ?? payload?.dc;
+      const maxDispenses = payload?.maxDispenses ?? payload?.md;
 
-    // Expiration check (spec Section 5.1)
-    if (payload?.u) {
-      const validUntil = new Date(payload.u);
-      const now = new Date();
-      
-      // Check if prescription has expired
-      if (now > validUntil) {
-        return res.status(400).json({ 
-          success: false, 
-          valid: false, 
-          message: 'Prescription expired',
-          expiredAt: validUntil.toISOString()
-        });
-      }
-    }
-
-    // Dispense count validation (spec Section 5.1)
-    // Check both compressed and decompressed field names
-    const dispenseCount = payload?.dispenseCount ?? payload?.dc;
-    const maxDispenses = payload?.maxDispenses ?? payload?.md;
-    
-    if (dispenseCount !== undefined && maxDispenses !== undefined) {
-      if (dispenseCount >= maxDispenses) {
-        return res.status(400).json({ 
-          success: false, 
-          valid: false, 
-          message: `Prescription fully dispensed (${dispenseCount}/${maxDispenses})` 
-        });
-      }
-    }
-
-    // Optional doctor signature verification
-    let signatureValid = true;
-    if (normalizedDoctorId) {
-      // Handle both old and new signature field names
-      const signature = payload?.signature || payload?.s;
-      
-      if (signature) {
-        // CRITICAL: Verify against the SAME structure that was signed
-        // The QR payload uses short field names (v, t, h, d, q, i, u, n, g, p, dc, md)
-        // We need to reconstruct that structure for verification
-        const signedPayload = {
-          v: payload.v || payload.version || "1.0",
-          t: payload.t || payload.topicID,
-          h: payload.h || payload.hashedPatientId,
-          d: payload.d || payload.drugId || payload.drugIds?.[0],
-          q: payload.q || payload.quantity,
-          i: payload.i || payload.instructions || payload.instructionsList?.[0],
-          u: payload.u || payload.validUntil,
-          n: payload.n || payload.nonce,
-          g: payload.g || payload.geoTag,
-          p: payload.p || payload.doctorIdHash,
-          dc: payload.dc ?? payload.dispenseCount ?? 0,
-          md: payload.md ?? payload.maxDispenses ?? 1
-        };
-        
-        signatureValid = verifySignature(signedPayload, signature, normalizedDoctorId);
-        
-        if (!signatureValid) {
-          console.warn('[SIGNATURE] Verification failed for doctor:', normalizedDoctorId);
-          console.warn('[SIGNATURE] Payload fields:', Object.keys(payload));
-          console.warn('[SIGNATURE] Reconstructed payload:', Object.keys(signedPayload));
+      if (dispenseCount !== undefined && maxDispenses !== undefined) {
+        if (dispenseCount >= maxDispenses) {
+          return res.status(400).json({
+            success: false,
+            valid: false,
+            message: `Prescription fully dispensed (${dispenseCount}/${maxDispenses})`
+          });
         }
-      } else {
-        console.warn('[SIGNATURE] No signature found in payload');
-        signatureValid = false;
       }
-    }
-    
-    // Return signature status in response for debugging
-    const signatureStatus = {
-      signatureValid: normalizedDoctorId ? signatureValid : null,
-      signatureChecked: !!normalizedDoctorId
-    };
-    
-    // For now, don't fail verification if signature is invalid (backward compatibility)
-    // In production, you should enforce this: if (!signatureValid && normalizedDoctorId) return res.status(401)...
-    if (signatureValid === false && normalizedDoctorId) {
-      console.warn('[SIGNATURE] Allowing verification to proceed despite invalid signature (backward compatibility)');
-    }
 
-    // Optional nonce replay prevention
-    try {
-      const { usedNonces } = require('./services/store');
-      if (payload?.nonce) {
-        if (usedNonces.has(payload.nonce)) {
-          return res.status(409).json({ success: false, valid: false, message: 'Duplicate prescription nonce' });
-        }
-        usedNonces.add(payload.nonce);
-      }
-    } catch (_) {}
+      // Optional doctor signature verification
+      let signatureValid = true;
+      if (normalizedDoctorId) {
+        // Handle both old and new signature field names
+        const signature = payload?.signature || payload?.s;
 
-    // Fraud detection: Check geotag distance
-    let fraudAlert = null;
-    try {
-      const { checkFraud } = require('./utils/fraudDetection');
-      const issueGeotag = payload.geoTag || payload.g; // Support both formats
-      const pharmacyGeotag = req.body.geo ? `${req.body.geo.lat},${req.body.geo.lng}` : null;
-      
-      if (issueGeotag && pharmacyGeotag) {
-        const fraudCheck = checkFraud(issueGeotag, pharmacyGeotag);
-        
-        if (fraudCheck.suspicious) {
-          console.warn(`[FRAUD ALERT] ${fraudCheck.reason}`);
-          fraudAlert = {
-            distance: fraudCheck.distance,
-            reason: fraudCheck.reason,
-            issueLocation: fraudCheck.issueCoords,
-            verifyLocation: fraudCheck.verifyCoords
+        if (signature) {
+          // CRITICAL: Verify against the SAME structure that was signed
+          // The QR payload uses short field names (v, t, h, d, q, i, u, n, g, p, dc, md)
+          // We need to reconstruct that structure for verification
+          const signedPayload = {
+            v: payload.v || payload.version || "1.0",
+            t: payload.t || payload.topicID,
+            h: payload.h || payload.hashedPatientId,
+            d: payload.d || payload.drugId || payload.drugIds?.[0],
+            q: payload.q || payload.quantity,
+            i: payload.i || payload.instructions || payload.instructionsList?.[0],
+            u: payload.u || payload.validUntil,
+            n: payload.n || payload.nonce,
+            g: payload.g || payload.geoTag,
+            p: payload.p || payload.doctorIdHash,
+            dc: payload.dc ?? payload.dispenseCount ?? 0,
+            md: payload.md ?? payload.maxDispenses ?? 1
           };
+
+          signatureValid = verifySignature(signedPayload, signature, normalizedDoctorId);
+
+          if (!signatureValid) {
+            console.warn('[SIGNATURE] Verification failed for doctor:', normalizedDoctorId);
+            console.warn('[SIGNATURE] Payload fields:', Object.keys(payload));
+            console.warn('[SIGNATURE] Reconstructed payload:', Object.keys(signedPayload));
+          }
         } else {
-          console.log(`[FRAUD CHECK] Normal verification: ${fraudCheck.reason}`);
+          console.warn('[SIGNATURE] No signature found in payload');
+          signatureValid = false;
         }
       }
-    } catch (fraudErr) {
-      console.error('Fraud detection error:', fraudErr);
-      // Don't fail verification if fraud detection fails
-    }
 
-    // Queue verified event for HCS
-    try {
-      const { queueMessage, lastEventHashPerTopic } = require('./services/store');
-      const prevEventHash = lastEventHashPerTopic.get(payload.topicID) || ('sha256:' + crypto.createHash('sha256').update(Buffer.from(JSON.stringify(payload))).digest('hex'));
-      const verification = { signatureOk: !!ok, validUntilOk: !payload?.validUntil || (Date.now() <= Date.parse(payload.validUntil)) };
-      const msgBase = {
-        version: '1',
-        alg: 'secp256k1+SHA-256',
-        eventType: 'verified',
+      // Return signature status in response for debugging
+      const signatureStatus = {
+        signatureValid: normalizedDoctorId ? signatureValid : null,
+        signatureChecked: !!normalizedDoctorId
+      };
+
+      // For now, don't fail verification if signature is invalid (backward compatibility)
+      // In production, you should enforce this: if (!signatureValid && normalizedDoctorId) return res.status(401)...
+      if (signatureValid === false && normalizedDoctorId) {
+        console.warn('[SIGNATURE] Allowing verification to proceed despite invalid signature (backward compatibility)');
+      }
+
+      // Optional nonce replay prevention
+      try {
+        const { usedNonces } = require('./services/store');
+        if (payload?.nonce) {
+          if (usedNonces.has(payload.nonce)) {
+            return res.status(409).json({ success: false, valid: false, message: 'Duplicate prescription nonce' });
+          }
+          usedNonces.add(payload.nonce);
+        }
+      } catch (_) { }
+
+      // Fraud detection: Check geotag distance
+      let fraudAlert = null;
+      try {
+        const { checkFraud } = require('./utils/fraudDetection');
+        const issueGeotag = payload.geoTag || payload.g; // Support both formats
+        const pharmacyGeotag = req.body.geo ? `${req.body.geo.lat},${req.body.geo.lng}` : null;
+
+        if (issueGeotag && pharmacyGeotag) {
+          const fraudCheck = checkFraud(issueGeotag, pharmacyGeotag);
+
+          if (fraudCheck.suspicious) {
+            console.warn(`[FRAUD ALERT] ${fraudCheck.reason}`);
+            fraudAlert = {
+              distance: fraudCheck.distance,
+              reason: fraudCheck.reason,
+              issueLocation: fraudCheck.issueCoords,
+              verifyLocation: fraudCheck.verifyCoords
+            };
+          } else {
+            console.log(`[FRAUD CHECK] Normal verification: ${fraudCheck.reason}`);
+          }
+        }
+      } catch (fraudErr) {
+        console.error('Fraud detection error:', fraudErr);
+        // Don't fail verification if fraud detection fails
+      }
+
+      // Queue verified event for HCS
+      try {
+        const { queueMessage, lastEventHashPerTopic } = require('./services/store');
+        const prevEventHash = lastEventHashPerTopic.get(payload.topicID) || ('sha256:' + crypto.createHash('sha256').update(Buffer.from(JSON.stringify(payload))).digest('hex'));
+        const verification = { signatureOk: !!ok, validUntilOk: !payload?.validUntil || (Date.now() <= Date.parse(payload.validUntil)) };
+        const msgBase = {
+          version: '1',
+          alg: 'secp256k1+SHA-256',
+          eventType: 'verified',
+          topicID: payload.topicID,
+          timestamp: new Date().toISOString(),
+          signerRole: 'pharmacist',
+          actorIdHash: pharmacistNationalId ? ('sha256:' + crypto.createHash('sha256').update(String(pharmacistNationalId) + (process.env.CNDP_SALT || 'atlascare-default-salt')).digest('hex')) : null,
+          drugIds: payload.drugIds || [payload.d], // Support both old and new format
+          verification,
+          prevEventHash,
+          dispenseCount: payload.dc || 0,
+          maxDispenses: payload.md || 1,
+          fraudAlert: fraudAlert || undefined // Include fraud alert if detected
+        };
+        let msg = { ...msgBase };
+        if (pharmacistNationalId) {
+          const { publicKeyHex } = ensureKeyPair(pharmacistNationalId);
+          const keyId = 'fp:' + crypto.createHash('sha256').update(Buffer.from(publicKeyHex, 'hex')).digest('hex').slice(0, 16);
+          const nonce = crypto.randomBytes(8).toString('hex');
+          const toHash = { ...msgBase, keyId, nonce };
+          const contentHash = 'sha256:' + crypto.createHash('sha256').update(Buffer.from(JSON.stringify(toHash))).digest('hex');
+          const signed = { ...toHash, contentHash };
+          const signature = signPayload(signed, pharmacistNationalId);
+          msg = { ...signed, signature: `hex:${signature}` };
+        }
+        // Compress payload for HCS (CNDP compliance + cost reduction)
+        const compressedMsg = compressPayload(msg, hashLookup);
+        console.log(`📊 VERIFIED message compression: ${JSON.stringify(msg).length} → ${JSON.stringify(compressedMsg).length} bytes`);
+
+        queueMessage(payload.topicID, { eventType: 'verified', payload: compressedMsg });
+        try {
+          const { submitPrescriptionMessage } = require('./hedera');
+          const hcsResult = await submitPrescriptionMessage(compressedMsg);
+          console.log('✅ HCS Message (verified, compressed) submitted:', hcsResult.status, 'Topic:', hcsResult.topicId);
+        } catch (hcsError) {
+          console.error('❌ HCS submission (verified) failed:', hcsError.message);
+        }
+        try {
+          const newHash = 'sha256:' + crypto.createHash('sha256').update(Buffer.from(JSON.stringify(msg))).digest('hex');
+          const { lastEventHashPerTopic, lastEventTypePerTopic } = require('./services/store');
+          lastEventHashPerTopic.set(payload.topicID, newHash);
+          lastEventTypePerTopic.set(payload.topicID, 'verified');
+        } catch (_) { }
+      } catch (_) { }
+
+      // Log HCS event for admin dashboard
+      const { logHCSEvent } = require('./services/store');
+      logHCSEvent({
         topicID: payload.topicID,
+        eventType: 'verified',
         timestamp: new Date().toISOString(),
         signerRole: 'pharmacist',
-        actorIdHash: pharmacistNationalId ? ('sha256:' + crypto.createHash('sha256').update(String(pharmacistNationalId) + (process.env.CNDP_SALT || 'atlascare-default-salt')).digest('hex')) : null,
-        drugIds: payload.drugIds || [payload.d], // Support both old and new format
-        verification,
-        prevEventHash,
-        dispenseCount: payload.dc || 0,
-        maxDispenses: payload.md || 1,
-        fraudAlert: fraudAlert || undefined // Include fraud alert if detected
-      };
-      let msg = { ...msgBase };
-      if (pharmacistNationalId) {
-        const { publicKeyHex } = ensureKeyPair(pharmacistNationalId);
-        const keyId = 'fp:' + crypto.createHash('sha256').update(Buffer.from(publicKeyHex, 'hex')).digest('hex').slice(0, 16);
-        const nonce = crypto.randomBytes(8).toString('hex');
-        const toHash = { ...msgBase, keyId, nonce };
-        const contentHash = 'sha256:' + crypto.createHash('sha256').update(Buffer.from(JSON.stringify(toHash))).digest('hex');
-        const signed = { ...toHash, contentHash };
-        const signature = signPayload(signed, pharmacistNationalId);
-        msg = { ...signed, signature: `hex:${signature}` };
-      }
-      // Compress payload for HCS (CNDP compliance + cost reduction)
-      const compressedMsg = compressPayload(msg, hashLookup);
-      console.log(`📊 VERIFIED message compression: ${JSON.stringify(msg).length} → ${JSON.stringify(compressedMsg).length} bytes`);
-      
-      queueMessage(payload.topicID, { eventType: 'verified', payload: compressedMsg });
-      try { 
-        const { submitPrescriptionMessage } = require('./hedera');
-        const hcsResult = await submitPrescriptionMessage(compressedMsg);
-        console.log('✅ HCS Message (verified, compressed) submitted:', hcsResult.status, 'Topic:', hcsResult.topicId);
-      } catch (hcsError) {
-        console.error('❌ HCS submission (verified) failed:', hcsError.message);
-      }
-      try {
-        const newHash = 'sha256:' + crypto.createHash('sha256').update(Buffer.from(JSON.stringify(msg))).digest('hex');
-        const { lastEventHashPerTopic, lastEventTypePerTopic } = require('./services/store');
-        lastEventHashPerTopic.set(payload.topicID, newHash);
-        lastEventTypePerTopic.set(payload.topicID, 'verified');
-      } catch (_) {}
-    } catch (_) {}
+        actorIdHash: normalizedPharmacistId ? hashIdentifier(normalizedPharmacistId, process.env.CNDP_SALT || 'atlascare-default-salt', payload.topicID) : null,
+        dispenseCount: payload.dispenseCount || 0,
+        maxDispenses: payload.maxDispenses || payload.md || 1,
+        fraudAlert: fraudAlert || null,
+        drugIds: payload.drugIds || [],
+        prescriptionId: payload.prescriptionId || payload.topicID
+      });
 
-    // Log HCS event for admin dashboard
-    const { logHCSEvent } = require('./services/store');
-    logHCSEvent({
-      topicID: payload.topicID,
-      eventType: 'verified',
-      timestamp: new Date().toISOString(),
-      signerRole: 'pharmacist',
-      actorIdHash: normalizedPharmacistId ? hashIdentifier(normalizedPharmacistId, process.env.CNDP_SALT || 'atlascare-default-salt', payload.topicID) : null,
-      dispenseCount: payload.dispenseCount || 0,
-      maxDispenses: payload.maxDispenses || payload.md || 1,
-      fraudAlert: fraudAlert || null,
-      drugIds: payload.drugIds || [],
-      prescriptionId: payload.prescriptionId || payload.topicID
-    });
-
-    return res.json({ 
-      success: true, 
-      valid: true,
-      signatureValid: signatureStatus.signatureValid,
-      fraudAlert: fraudAlert || undefined // Include fraud alert for frontend warning
-    });
-  } catch (error) {
-    console.error('Error verifying prescription:', error);
-    return res.status(500).json({ success: false, error: error.message });
-  }
-});
+      return res.json({
+        success: true,
+        valid: true,
+        signatureValid: signatureStatus.signatureValid,
+        fraudAlert: fraudAlert || undefined // Include fraud alert for frontend warning
+      });
+    } catch (error) {
+      console.error('Error verifying prescription:', error);
+      return res.status(500).json({ success: false, error: error.message });
+    }
+  });
 
 // Generate FSE (PRD: /api/generate-fse)
 app.post(
@@ -1226,7 +1226,7 @@ app.post(
   authenticateJWT,
   requireRole('pharmacist'),
   celebrate({
-    [Segments.BODY]: Joi.object({ 
+    [Segments.BODY]: Joi.object({
       prescription: Joi.object().required(),
       refs: Joi.object({
         nft: Joi.object({ tokenId: Joi.string(), serial: Joi.alternatives().try(Joi.string(), Joi.number()) }).optional(),
@@ -1236,33 +1236,33 @@ app.post(
     })
   }),
   async (req, res) => {
-  try {
-    const { prescription, refs, pharmacistNationalId } = req.body || {};
-    if (!prescription) {
-      return res.status(400).json({ success: false, message: 'Missing prescription' });
+    try {
+      const { prescription, refs, pharmacistNationalId } = req.body || {};
+      if (!prescription) {
+        return res.status(400).json({ success: false, message: 'Missing prescription' });
+      }
+
+      // Build pharmacist info from authenticated user and request
+      const pharmacist = {
+        name: req.user?.fullName || 'Pharmacy',
+        nationalId: pharmacistNationalId || req.user?.username || 'unknown',
+        username: req.user?.username || 'unknown'
+      };
+
+      const { fseJson, fsePdfUrl, fsePdfBase64, hl7Message, summary } = generateFSE(prescription, { refs, pharmacist });
+      return res.json({
+        success: true,
+        fseJson,
+        fsePdfUrl,
+        fsePdfBase64,
+        hl7Message,
+        summary
+      });
+    } catch (error) {
+      console.error('Error generating FSE:', error);
+      return res.status(500).json({ success: false, error: error.message });
     }
-    
-    // Build pharmacist info from authenticated user and request
-    const pharmacist = {
-      name: req.user?.fullName || 'Pharmacy',
-      nationalId: pharmacistNationalId || req.user?.username || 'unknown',
-      username: req.user?.username || 'unknown'
-    };
-    
-    const { fseJson, fsePdfUrl, fsePdfBase64, hl7Message, summary } = generateFSE(prescription, { refs, pharmacist });
-    return res.json({ 
-      success: true, 
-      fseJson, 
-      fsePdfUrl, 
-      fsePdfBase64, 
-      hl7Message, 
-      summary 
-    });
-  } catch (error) {
-    console.error('Error generating FSE:', error);
-    return res.status(500).json({ success: false, error: error.message });
-  }
-});
+  });
 
 // Get medicines for autocomplete (unified source) - CACHED
 app.get('/api/medicines', (req, res) => {
@@ -1277,7 +1277,7 @@ app.get('/api/medicines', (req, res) => {
 
     // If cache not loaded yet, load it now
     loadMedicinesCache();
-    
+
     if (medicinesCache) {
       res.setHeader('Cache-Control', 'public, max-age=3600');
       return res.json(medicinesCache);
@@ -1288,10 +1288,10 @@ app.get('/api/medicines', (req, res) => {
     return res.json([]);
   } catch (error) {
     console.error('[MEDICINES] Endpoint error:', error.message);
-    return res.status(500).json({ 
-      success: false, 
-      error: 'Failed to load medicines catalog', 
-      message: error.message 
+    return res.status(500).json({
+      success: false,
+      error: 'Failed to load medicines catalog',
+      message: error.message
     });
   }
 });
@@ -1300,13 +1300,13 @@ app.get('/api/medicines', (req, res) => {
 
 app.listen(PORT, async () => {
   console.log(`Server running on http://localhost:${PORT}`);
-  
+
   // Validate environment variables (fail fast if misconfigured)
   try {
     const { validateEnv, printEnvStatus, getProductionReadinessReport } = require('./utils/envValidator');
     validateEnv();
     printEnvStatus();
-    
+
     // Check production readiness
     const readinessReport = getProductionReadinessReport();
     if (!readinessReport.ready) {
@@ -1323,10 +1323,10 @@ app.listen(PORT, async () => {
     console.error('Environment validation failed:', err.message);
     console.error('Server will continue but may not function correctly');
   }
-  
+
   // Load medicines cache (once on startup)
   loadMedicinesCache();
-  
+
   // Load persisted data
   const { persistence } = require('./services/store');
   try {
@@ -1336,23 +1336,23 @@ app.listen(PORT, async () => {
   } catch (err) {
     console.warn('⚠️  Persistence initialization failed:', err.message);
   }
-  
+
   // Migrate existing prescriptions to event log (one-time backfill)
   try {
     const { logHCSEvent, hcsEventLog } = require('./services/store');
-    
+
     // Only migrate if event log is empty
     if (hcsEventLog.length === 0 && prescriptionIndex.size > 0) {
       console.log(`[MIGRATION] Backfilling event log with ${prescriptionIndex.size} existing prescriptions...`);
-      
+
       for (const [prescriptionId, prescription] of prescriptionIndex.entries()) {
         const topicID = prescriptionToTopic.get(prescriptionId);
         if (!topicID) continue;
-        
+
         const prescriptionData = inMemoryStore.get(topicID);
         const currentStatus = prescriptionData?.status || lastEventTypePerTopic.get(topicID) || 'issued';
         const payload = prescriptionData?.payload;
-        
+
         // Create issued event (always exists)
         logHCSEvent({
           topicID: topicID,
@@ -1366,7 +1366,7 @@ app.listen(PORT, async () => {
           drugIds: payload?.drugIds || [],
           prescriptionId: prescriptionId
         });
-        
+
         // Create subsequent events based on current status
         if (currentStatus === 'verified' || currentStatus === 'paid' || currentStatus === 'dispensed') {
           logHCSEvent({
@@ -1382,7 +1382,7 @@ app.listen(PORT, async () => {
             prescriptionId: prescriptionId
           });
         }
-        
+
         if (currentStatus === 'paid' || currentStatus === 'dispensed') {
           logHCSEvent({
             topicID: topicID,
@@ -1397,7 +1397,7 @@ app.listen(PORT, async () => {
             prescriptionId: prescriptionId
           });
         }
-        
+
         if (currentStatus === 'dispensed') {
           logHCSEvent({
             topicID: topicID,
@@ -1413,7 +1413,7 @@ app.listen(PORT, async () => {
           });
         }
       }
-      
+
       console.log(`✅ [MIGRATION] Backfilled ${hcsEventLog.length} events from ${prescriptionIndex.size} prescriptions`);
       persistence.markDirty(); // Save the migrated events
     } else if (hcsEventLog.length > 0) {
@@ -1422,7 +1422,7 @@ app.listen(PORT, async () => {
   } catch (err) {
     console.warn('⚠️  Event log migration failed:', err.message);
   }
-  
+
   // Start status reconciliation job (handles Mirror Node delays)
   try {
     const { startReconciliationJob } = require('./services/statusReconciliation');
@@ -1431,7 +1431,7 @@ app.listen(PORT, async () => {
   } catch (err) {
     console.warn('⚠️  Reconciliation job failed:', err.message);
   }
-  
+
   // Start notification queue processing (email retries + SMS fallback)
   try {
     const { startProcessing } = require('./services/notificationQueue');
@@ -1440,10 +1440,10 @@ app.listen(PORT, async () => {
   } catch (err) {
     console.warn('⚠️  Notification queue failed:', err.message);
   }
-  
+
   // Initialize BullMQ queue if Redis is configured
   initQueue().catch(err => console.warn('Queue init error:', err.message));
-  try { queueSyncLoop(); } catch (_) {}
+  try { queueSyncLoop(); } catch (_) { }
 });
 
 // Celebrate error handler
@@ -1466,12 +1466,12 @@ app.post(
       const topicID = prescriptionToTopic.get(prescriptionId);
       if (topicID) {
         const { submitPrescriptionMessage } = require('./hedera');
-        await submitPrescriptionMessage({ 
-          type: 'cancelled', 
-          topicID, 
-          prescriptionId, 
-          timestamp: Date.now(), 
-          refs: { reason } 
+        await submitPrescriptionMessage({
+          type: 'cancelled',
+          topicID,
+          prescriptionId,
+          timestamp: Date.now(),
+          refs: { reason }
         });
       } else {
         await submitAuditMessage({ type: 'cancelled', prescriptionId, timestamp: Date.now(), refs: { reason } });
@@ -1499,7 +1499,7 @@ app.post(
   async (req, res) => {
     const { topicID, pharmacistNationalId } = req.body || {};
     const { acquireDispenseLock, releaseDispenseLock } = require('./services/statusReconciliation');
-    
+
     // CRITICAL: Acquire lock to prevent race conditions (double-dispensing)
     if (!acquireDispenseLock(topicID, pharmacistNationalId)) {
       return res.status(409).json({
@@ -1508,28 +1508,28 @@ app.post(
         error: 'CONCURRENT_DISPENSE_ATTEMPT'
       });
     }
-    
+
     try {
       const { items, totals, prevEventHash, paymentMethod } = req.body || {};
       const { lastEventHashPerTopic, lastEventTypePerTopic, inMemoryStore } = require('./services/store');
-      
+
       // Get current prescription data to track dispense count
       const prescriptionData = inMemoryStore.get(topicID);
       const currentDispenseCount = prescriptionData?.payload?.dispenseCount || 0;
       const maxDispenses = prescriptionData?.payload?.maxDispenses || 1;
-      
+
       // Check if prescription can be dispensed
       if (currentDispenseCount >= maxDispenses) {
         releaseDispenseLock(topicID); // Release lock before returning
-        return res.status(400).json({ 
-          success: false, 
-          message: `Prescription fully dispensed (${currentDispenseCount}/${maxDispenses})` 
+        return res.status(400).json({
+          success: false,
+          message: `Prescription fully dispensed (${currentDispenseCount}/${maxDispenses})`
         });
       }
-      
+
       // Increment dispense count
       const newDispenseCount = currentDispenseCount + 1;
-      
+
       const chainPrev = prevEventHash || lastEventHashPerTopic.get(topicID) || undefined;
       const base = {
         version: '1',
@@ -1555,7 +1555,7 @@ app.post(
       const signed = { ...toHash, contentHash };
       const signature = signPayload(signed, pharmacistNationalId);
       const payload = { ...signed, signature: `hex:${signature}` };
-      
+
       // Store sensitive data (items, totals) separately - NOT in HCS for CNDP compliance
       putSensitiveData(topicID, {
         ...getSensitiveData(topicID), // Preserve existing sensitive data
@@ -1563,13 +1563,13 @@ app.post(
         dispensedTotals: totals,
         paymentMethod: paymentMethod
       });
-      
+
       // Compress payload for HCS (remove items/totals arrays)
       const compressedPayload = compressPayload(payload, hashLookup);
       console.log(`📊 DISPENSED message compression: ${JSON.stringify(payload).length} → ${JSON.stringify(compressedPayload).length} bytes`);
-      
+
       queueMessage(topicID, { eventType: 'dispensed', payload: compressedPayload });
-      try { 
+      try {
         const { submitPrescriptionMessage } = require('./hedera');
         const hcsResult = await submitPrescriptionMessage(topicID, compressedPayload);
         console.log('✅ HCS Message (dispensed, compressed) submitted:', hcsResult.status, 'Topic:', hcsResult.topicId);
@@ -1580,14 +1580,14 @@ app.post(
         const newHash = 'sha256:' + crypto.createHash('sha256').update(Buffer.from(JSON.stringify(payload))).digest('hex');
         lastEventHashPerTopic.set(topicID, newHash);
         lastEventTypePerTopic.set(topicID, 'dispensed');
-        
+
         // Update dispense count and last dispense date in in-memory store
         if (prescriptionData) {
           prescriptionData.payload.dispenseCount = newDispenseCount;
           prescriptionData.payload.lastDispenseDate = new Date().toISOString();
           inMemoryStore.set(topicID, prescriptionData);
         }
-        
+
         // Also update prescriptionIndex with last dispense date
         const prescriptionRecord = prescriptionIndex.get(topicID);
         if (prescriptionRecord) {
@@ -1595,12 +1595,12 @@ app.post(
           prescriptionRecord.lastDispenseDate = new Date().toISOString();
           prescriptionIndex.set(topicID, prescriptionRecord);
         }
-        
+
         // CRITICAL: Also update inMemoryStore status
         const { setTopicStatus, logHCSEvent } = require('./services/store');
         setTopicStatus(topicID, 'dispensed');
         console.log(`[DISPENSE] Updated topic ${topicID} status to: dispensed (${newDispenseCount}/${maxDispenses}) at ${new Date().toISOString()}`);
-        
+
         // Log HCS event for admin dashboard
         logHCSEvent({
           topicID: topicID,
@@ -1616,8 +1616,8 @@ app.post(
           paymentMethod: paymentMethod,
           totals: totals
         });
-      } catch (_) {}
-      
+      } catch (_) { }
+
       // Release lock after successful dispense
       releaseDispenseLock(topicID);
       return res.json({ success: true });
@@ -1654,13 +1654,13 @@ app.post(
 app.get('/api/admin/hcs-logs', authenticateJWT, requireRole('admin'), async (req, res) => {
   try {
     const { filter = 'all' } = req.query;
-    
+
     // Get events from the new HCS event log
     const { getHCSEvents } = require('./services/store');
     const events = getHCSEvents(filter);
-    
+
     console.log(`[ADMIN] Fetching HCS logs - filter: ${filter}, total events: ${events.length}`);
-    
+
     return res.json({ success: true, logs: events, total: events.length });
   } catch (error) {
     console.error('Error fetching HCS logs:', error);
@@ -1702,13 +1702,13 @@ app.post(
       const topicID = prescriptionToTopic.get(prescriptionId);
       if (topicID) {
         const { submitPrescriptionMessage } = require('./hedera');
-        await submitPrescriptionMessage({ 
-          type: 'amended', 
-          topicID, 
-          prescriptionId, 
-          timestamp: Date.now(), 
-          hashes: { contentHash }, 
-          refs: { reason } 
+        await submitPrescriptionMessage({
+          type: 'amended',
+          topicID,
+          prescriptionId,
+          timestamp: Date.now(),
+          hashes: { contentHash },
+          refs: { reason }
         });
       } else {
         await submitAuditMessage({ type: 'amended', prescriptionId, timestamp: Date.now(), hashes: { contentHash }, refs: { reason } });

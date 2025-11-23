@@ -15,7 +15,7 @@
         },
         {
           "key": "Access-Control-Allow-Origin",
-          "value": "https://atlascaree.vercel.app"
+          "value": "https://atlascaretech.vercel.app"
         },
         {
           "key": "Access-Control-Allow-Methods",
